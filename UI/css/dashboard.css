@@ -1,0 +1,77 @@
+.dashboard{
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  margin: 0 auto;
+}
+.dashboard .container{
+  padding-top: 50px;
+
+  padding-left:10%;
+  padding-bottom: 100px;
+}
+
+.dashboard-content span {
+  text-align: center;
+
+  
+  }
+  .dashboard-content span a{
+      text-decoration: none;
+      color:white;
+      
+      font-size: 30px;
+      background: rgb(35, 150, 79);
+      padding: 5px;
+      border-radius: 5px;
+      
+  }
+  .dashboard-topbar a:hover{
+      text-decoration: none;
+    
+ 
+  }
+  .dashboard-topbar a img{
+      width:18px;
+  }
+
+  .table thead tr{
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+.table tbody tr td{
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+.table tbody tr td .Status{
+    background: #2ABC5D;
+    color: #fff;
+    border-radius: 3px;
+    padding: 10px 5px 10px 5px;
+}
+
+.button-delete {
+  color: #fff;
+  background-color: #bd2130;
+  border-color: #f65959;
+  border: 1px solid transparent;
+  padding: 10px 5px 10px 5px;
+  font-size: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0px;
+  margin-top: -10px;
+}
+
+.button-delete:hover {
+  color: #fff;
+  background-color: red;
+
+}
+.container h4{text-align: center;font-weight: bold;font-size: 30px}
+tr a {text-decoration: none;color: black;}
+tr a:hover {text-decoration: none;color: #23b4ca;}
