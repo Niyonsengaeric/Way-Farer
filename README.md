@@ -26,5 +26,5 @@ https://www.pivotaltracker.com/n/projects/2370303
 
 ## How it Works
 
-OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with the different pages.
+OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with  different pages.
 
