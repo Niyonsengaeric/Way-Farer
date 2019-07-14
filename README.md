@@ -1,7 +1,7 @@
 # Way Farer
 WayFarer is a public bus transportation booking service.
 
-##Required Features
+## Required Features
 
 1. User can sign up.
 2. User can sign in.
@@ -14,7 +14,7 @@ WayFarer is a public bus transportation booking service.
 9. Users can delete their booking.
 
 
-###Links
+### Links
 1.Gh-pages
 https://niyonsengaeric.github.io/Way-Farer/UI/
 
@@ -24,7 +24,7 @@ https://www.pivotaltracker.com/n/projects/2370303
 
 
 
-##How it Works
+## How it Works
 
 OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with the page.
 
