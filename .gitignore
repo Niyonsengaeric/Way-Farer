@@ -1,6 +1,6 @@
-.nyc_output
+.nyc_outpute
 .vscode
 coverage
 node_modules
-.travis.yml
 test
+.travis.yml
