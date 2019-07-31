@@ -5,7 +5,7 @@ import { book, getbookings, deletebooking } from "../controllers/bookings";
 const router = express.Router();
 router.post("/bookings", auth, book);
 router.get("/bookings", auth, getbookings);
-// router.delete('/bookings/:id', auth, deletebooking);
+router.delete("/bookings/:id", auth, deletebooking);
 
 //
 
