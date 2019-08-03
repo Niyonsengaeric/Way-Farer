@@ -12,7 +12,7 @@
     "start": "nodemon --exec babel-node src/index.js",
     "sbabel": "--exec babel-node src/index.js",
     "test": "nyc --reporter=html --reporter=text mocha --no-timeout --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -30,6 +30,7 @@
     "Validator": "^1.0.8",
     "bcrypt": "^3.0.6",
     "config": "^3.2.2",
+    "coverage": "^0.4.1",
     "express": "^4.17.1",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
