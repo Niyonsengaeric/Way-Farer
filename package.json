@@ -14,7 +14,7 @@
     "test": "nyc --reporter=html --reporter=text mocha --no-timeout --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix "
   },
   "repository": {
     "type": "git",
