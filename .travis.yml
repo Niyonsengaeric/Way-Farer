@@ -7,6 +7,6 @@ cache:
     - node_modules
 script:
   - npm test
-  - npm run coverage
+  - npm coverage
 after_success:
   - npm run coveralls
