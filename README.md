@@ -1,5 +1,5 @@
 # Way Farer
-WayFarer is a public bus transportation booking service.
+WayFarer is a public bus transportation booking service.[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=develop)](https://travis-ci.com/Niyonsengaeric/Way-Farer)
 
 ## Required Features
 
