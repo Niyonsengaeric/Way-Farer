@@ -14,7 +14,13 @@ export const regUser = async (req, res) => {
   const { error } = validate(req.body);
 
   if (error)
-    return feedback.response(res, 400, `${error.details[0].message}`, true);
+    return feedback.response(
+      res,
+      400,
+      "error",
+      `${error.details[0].message}`,
+      true
+    );
 
   // (error.details[0].message
 
@@ -25,6 +31,7 @@ export const regUser = async (req, res) => {
     return feedback.response(
       res,
       401,
+      "error",
       "User with that email already registered",
       true
     );
@@ -53,7 +60,7 @@ export const regUser = async (req, res) => {
     addUser.password = await bcrypt.hash(addUser.password, salt);
 
     users.push(addUser);
-    feedback.response(res, 201, addUser, false);
+    feedback.response(res, 201, "success", addUser, false);
   }
 };
 // User log in
@@ -63,7 +70,13 @@ export const loginUser = async (req, res) => {
   // ###validate userlogin
   const { error } = validateLogin(req.body);
   if (error)
-    return feedback.response(res, 400, `${error.details[0].message}`, true);
+    return feedback.response(
+      res,
+      400,
+      "error",
+      `${error.details[0].message}`,
+      true
+    );
   // responses.response(res, 401, true)
 
   const user = await users.filter(
@@ -87,13 +100,25 @@ export const loginUser = async (req, res) => {
           token
         };
 
-        return feedback.response(res, 200, response, false);
+        return feedback.response(res, 200, "success", response, false);
       }
     } else {
-      return feedback.response(res, 401, "Invalid user or password", true);
+      return feedback.response(
+        res,
+        401,
+        "error",
+        "Invalid user or password",
+        true
+      );
     }
   } else {
-    return feedback.response(res, 401, "Invalid user or password", true);
+    return feedback.response(
+      res,
+      401,
+      "error",
+      "Invalid user or password",
+      true
+    );
   }
 };
 

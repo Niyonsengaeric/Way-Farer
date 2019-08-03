@@ -1,9 +1,8 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 function validateTrip(trip) {
   const schema = {
-    seating_capacity: Joi.number()
-      .required(),
+    seating_capacity: Joi.number().required(),
     bus_license_number: Joi.string()
       .max(50)
       .required(),
@@ -13,16 +12,13 @@ function validateTrip(trip) {
     destination: Joi.string()
       .max(50)
       .required(),
-    trip_date: Joi.date()
-      .required(),
+    trip_date: Joi.date().required(),
     time: Joi.required(),
-    fare: Joi.number()
-      .required(),
-    status: Joi.string(),
+    fare: Joi.number().required(),
+    status: Joi.string()
   };
 
   return Joi.validate(trip, schema);
 }
-
 
 module.exports = validateTrip;
