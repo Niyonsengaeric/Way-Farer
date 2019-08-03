@@ -9,19 +9,27 @@ import bookings from "../models/bookings";
 export const book = (req, res) => {
   const { error } = validate(req.body);
   if (error) {
-    return feedback.response(res, 400, `${error.details[0].message}, true`);
+    return feedback.response(
+      res,
+      400,
+      "error",
+      `${error.details[0].message}`,
+      true
+    );
   }
 
   // // ###check trip ID
   const tripid = req.body.tripId;
   const findtripid = trips.find(findtripid => findtripid.id == tripid);
-  if (!findtripid) return res.status(404).send("No trip found!");
+  if (!findtripid)
+    return feedback.response(res, 404, "error", "No trip found!", true);
   // check if trip is activated*
 
   if (findtripid.status == "CANCELED") {
     return feedback.response(
       res,
       400,
+      "error",
       "TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP",
       true
     );
@@ -52,13 +60,12 @@ export const book = (req, res) => {
 
   // console.log(userid)
 
-  // console.log(bkuser_id);
-
   // check for booking and save
   if (seating_capacity <= 0) {
     return feedback.response(
       res,
       400,
+      "error",
       "SORRY!!! No seats left on the trip",
       true
     );
@@ -97,18 +104,18 @@ export const book = (req, res) => {
         trips[updtrip].seating_capacity = seating_capacity - 1;
         // console.log(updtrip);
 
-        return feedback.response(res, 201, addBooking, false);
+        return feedback.response(res, 201, "success", addBooking, false);
       }
     }
   } else {
-    return feedback.response(res, 401, "booking already made!", true);
+    return feedback.response(res, 401, "error", "booking already made!", true);
   }
 };
 
 export const getbookings = (req, res) => {
   // ###Display all bookings made users //sa admin
   if (req.user.isAdmin) {
-    return feedback.response(res, 200, bookings, false);
+    return feedback.response(res, 200, "success", bookings, false);
   }
 
   // ###Display bookings  user for user only
@@ -117,10 +124,10 @@ export const getbookings = (req, res) => {
     finduserid => finduserid.user_id === req.user.id
   );
   if (finduserid.length > 0) {
-    return feedback.response(res, 200, finduserid, false);
+    return feedback.response(res, 200, "success", finduserid, false);
   }
 
-  return feedback.response(res, 404, "no bookings found", true);
+  return feedback.response(res, 404, "error", "no bookings found", true);
 };
 
 export const deletebooking = (req, res) => {
@@ -134,8 +141,14 @@ export const deletebooking = (req, res) => {
   //###delete a Booking
   if (findbookingindex !== -1) {
     bookings.splice(findbookingindex, 1);
-    return res.status(200).send("Booking deleted successfully");
+
+    return feedback.response(
+      res,
+      200,
+      "success",
+      "Booking deleted successfully"
+    );
   } else {
-    res.send("Booking not Found");
+    return feedback.response(res, 404, "error", "Booking not Found!", true);
   }
 };

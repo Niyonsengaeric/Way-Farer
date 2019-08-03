@@ -8,7 +8,13 @@ const router = express.Router();
 export const regTrip = async (req, res) => {
   const { error } = validate(req.body);
   if (error)
-    return feedback.response(res, 400, `${error.details[0].message}`, true);
+    return feedback.response(
+      res,
+      400,
+      "error",
+      `${error.details[0].message}`,
+      true
+    );
   let trip_origin = await trips.filter(
     trip_origin =>
       trip_origin.origin.toUpperCase() === req.body.origin.toUpperCase()
@@ -31,7 +37,13 @@ export const regTrip = async (req, res) => {
     trip_date.length > 0 &&
     trip_time.length > 0
   ) {
-    return feedback.response(res, 401, "trip already registered ", true);
+    return feedback.response(
+      res,
+      401,
+      "error",
+      "trip already registered ",
+      true
+    );
   } else {
     const {
       seating_capacity,
@@ -57,7 +69,7 @@ export const regTrip = async (req, res) => {
 
     trips.push(addTrip);
 
-    return feedback.response(res, 201, addTrip, false);
+    return feedback.response(res, 201, "success", addTrip, false);
   }
 };
 
@@ -67,21 +79,27 @@ export const cancelTrip = (req, res) => {
   if (trip_id >= 0) {
     // console.log('trip found');
     trips[trip_id].status = "CANCELED";
-    return feedback.response(res, 200, "Trip cancelled successfully", false);
+    return feedback.response(
+      res,
+      200,
+      "success",
+      "Trip cancelled successfully",
+      false
+    );
   } else {
-    return feedback.response(res, 404, "Trip not Found!", true);
+    return feedback.response(res, 404, "error", "Trip not Found!", true);
   }
 };
 
 export const getTrips = (req, res) => {
-  return feedback.response(res, 200, trips, false);
+  return feedback.response(res, 200, "success", trips, false);
 };
 export const spfTrip = (req, res) => {
   const { id } = req.params;
   const trip_id = trips.find(trp => trp.id === parseInt(id, 10));
   if (trip_id) {
-    return feedback.response(res, 200, trip_id, false);
+    return feedback.response(res, 200, "success", trip_id, false);
   } else {
-    return feedback.response(res, 404, "Trip not Found!", true);
+    return feedback.response(res, 404, "error", "Trip not Found!", true);
   }
 };
