@@ -12,7 +12,7 @@
     "start": "nodemon --exec babel-node src/index.js",
     "sbabel": "--exec babel-node src/index.js",
     "test": "nyc --reporter=html --reporter=text mocha --no-timeout --exit",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
