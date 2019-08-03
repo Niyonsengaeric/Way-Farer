@@ -1,5 +1,6 @@
 # Way Farer
-WayFarer is a public bus transportation booking service.[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=develop)](https://travis-ci.com/Niyonsengaeric/Way-Farer)
+
+WayFarer is a public bus transportation booking service.[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=develop)](https://travis-ci.com/Niyonsengaeric/Way-Farer) [![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg?branch=develop)](https://coveralls.io/github/Niyonsengaeric/Way-Farer?branch=develop)
 
 ## Required Features
 
@@ -13,18 +14,14 @@ WayFarer is a public bus transportation booking service.[![Build Status](https:/
 8. View all bookings. An Admin can see all bookings, while user can see all of his/her bookings.
 9. Users can delete their booking.
 
-
 ### Links
+
 1.Gh-pages
 https://niyonsengaeric.github.io/Way-Farer/UI/
-
 
 2.Pivotal Tracker
 https://www.pivotaltracker.com/n/projects/2370303
 
-
-
 ## How it Works
 
-OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with  different pages.
-
+OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with different pages.
