@@ -1,4 +1,5 @@
 # Way Farer.
+
 WayFarer is a public bus transportation booking service.
 
 # Badges.
@@ -19,10 +20,10 @@ WayFarer is a public bus transportation booking service.
 
 ### Links.
 
-1.Gh-pages
+1.Gh-pages.
 https://niyonsengaeric.github.io/Way-Farer/UI/
 
-2.Pivotal Tracker
+2.Pivotal Tracker.
 https://www.pivotaltracker.com/n/projects/2370303
 
 ## How it Works.
