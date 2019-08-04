@@ -4,9 +4,7 @@ WayFarer is a public bus transportation booking service.
 
 # Badges.
 
-[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=ft-coverage-%23167688670)](https://travis-ci.com/Niyonsengaeric/Way-Farer)
-[![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg)](https://coveralls.io/github/Niyonsengaeric/Way-Farer)  
- [![Maintainability](https://api.codeclimate.com/v1/badges/4df670e1163c640664e3/maintainability)](https://codeclimate.com/github/Niyonsengaeric/Way-Farer/maintainability)
+[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=ft-coverage-%23167688670)](https://travis-ci.com/Niyonsengaeric/Way-Farer) [![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg)](https://coveralls.io/github/Niyonsengaeric/Way-Farer) [![Maintainability](https://api.codeclimate.com/v1/badges/4df670e1163c640664e3/maintainability)](https://codeclimate.com/github/Niyonsengaeric/Way-Farer/maintainability)
 
 ## Required Features.
 
