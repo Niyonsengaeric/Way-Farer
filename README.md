@@ -1,6 +1,6 @@
 # Way Farer.
 
-WayFarer is a public bus transportation booking service.
+WayFarer is a Public Bus Transportation Booking Service.
 
 # Badges.
 
