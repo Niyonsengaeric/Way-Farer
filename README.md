@@ -1,11 +1,11 @@
 # Way Farer.
-WayFarer is a public bus transportation booking service.
+
+WayFarer is a Public Bus Transportation Booking Service.
 
 # Badges.
 
-[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=ft-coverage-%23167688670)](https://travis-ci.com/Niyonsengaeric/Way-Farer)
-[![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg)](https://coveralls.io/github/Niyonsengaeric/Way-Farer)  
- [![Maintainability](https://api.codeclimate.com/v1/badges/4df670e1163c640664e3/maintainability)](https://codeclimate.com/github/Niyonsengaeric/Way-Farer/maintainability)
+[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=ft-coverage-%23167688670)](https://travis-ci.com/Niyonsengaeric/Way-Farer)  [![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg)](https://coveralls.io/github/Niyonsengaeric/Way-Farer)  [![Maintainability](https://api.codeclimate.com/v1/badges/4df670e1163c640664e3/maintainability)](https://codeclimate.com/github/Niyonsengaeric/Way-Farer/maintainability)
+
 
 ## Required Features.
 
@@ -21,10 +21,10 @@ WayFarer is a public bus transportation booking service.
 
 ### Links.
 
-1.Gh-pages
+1.Gh-pages.
 https://niyonsengaeric.github.io/Way-Farer/UI/
 
-2.Pivotal Tracker
+2.Pivotal Tracker.
 https://www.pivotaltracker.com/n/projects/2370303
 
 ## How it Works.
