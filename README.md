@@ -1,6 +1,6 @@
 # Way Farer
 
-WayFarer is a public bus transportation booking service.[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=develop)](https://travis-ci.com/Niyonsengaeric/Way-Farer) [![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg?branch=develop)](https://coveralls.io/github/Niyonsengaeric/Way-Farer?branch=develop)
+WayFarer is a public bus transportation booking service.[![Build Status](https://travis-ci.com/Niyonsengaeric/Way-Farer.svg?branch=ft-coverage-%23167688670)](https://travis-ci.com/Niyonsengaeric/Way-Farer) [![Coverage Status](https://coveralls.io/repos/github/Niyonsengaeric/Way-Farer/badge.svg?branch=develop)](https://coveralls.io/github/Niyonsengaeric/Way-Farer?branch=develop)
 
 ## Required Features
 
