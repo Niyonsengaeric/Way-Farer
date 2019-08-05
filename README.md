@@ -48,6 +48,10 @@ WayFarer is a Public Bus Transportation Booking Service.
 
     - npm test
 
+## **Start The Application**
+
+     - npm start
+
 ## **API endpoints**
 
 `- POST /auth/signin - User Signin`
