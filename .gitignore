@@ -1,4 +1,5 @@
 .nyc_output
+.nyc_output/processinfo
 .vscode
 coverage
 node_modules
