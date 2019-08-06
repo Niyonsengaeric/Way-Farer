@@ -357,7 +357,7 @@ body {
   position: relative;
   background-size: cover;
   box-sizing: border-box;
-  background-image: url('/images/bus1.jpg');
+  background-image: url('../images/bus1.jpg');
   float: left;
   width: 100%;
 }
