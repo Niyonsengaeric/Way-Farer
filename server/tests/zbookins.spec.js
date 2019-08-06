@@ -1,10 +1,10 @@
 import chai, { expect } from "chai";
 import chaiHttp from "chai-http";
-import app from "../src/index";
+import app from "../index";
 import jwt from "jsonwebtoken";
-import trips from "../src/models/trips";
-import { book } from "../src/controllers/bookings";
-import bookings from "../src/models/bookings";
+import trips from "../models/trips";
+import { book } from "../controllers/bookings";
+import bookings from "../models/bookings";
 const should = chai.should();
 chai.use(chaiHttp);
 chai.should();
