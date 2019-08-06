@@ -1,9 +1,12 @@
-body{height: auto;}
-.details-content{
+body {
+  height: auto;
+}
+
+.details-content {
   margin-top: 100px;
 }
 
-.trip-details{
+.trip-details {
   max-width: 600px;
   background-color: #fff;
   color: #000;
@@ -15,13 +18,18 @@ body{height: auto;}
   padding-top: 10px;
   margin-bottom: 100px;
   text-align: center;
- 
 }
-.trip-details label{font-weight: bold;}
-.trip-details label span{font-weight: normal;}
 
-.trip-details button{  
-    color: #fff;
+.trip-details label {
+  font-weight: bold;
+}
+
+.trip-details label span {
+  font-weight: normal;
+}
+
+.trip-details button {
+  color: #fff;
   background-color: #23b4ca;
   border-color: green;
   border: 1px solid transparent;
@@ -30,10 +38,11 @@ body{height: auto;}
   border-radius: 3px;
   cursor: pointer;
   margin: 0px;
-;}
+  ;
+}
 
-.trip-details button:hover{  
-    color: #fff;
+.trip-details button:hover {
+  color: #fff;
   background-color: #16ad55;
-
-;}
+  ;
+}
