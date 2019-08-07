@@ -1,11 +1,14 @@
-body{height: auto;}
-.details-content{
+body {
+  height: auto;
+}
+
+.details-content {
   margin-top: 100px;
 }
 
-.about-details{
+.about-details {
   max-width: 600px;
-  background-color: #dedede;
+  background-color: #abd6dc;
   color: #000;
   margin-right: auto;
   margin-left: auto;
@@ -18,17 +21,10 @@ body{height: auto;}
   position: relative;
   opacity: 1;
   padding-left: 1%;
- 
 }
 
-
-
-.about-details h1{
+.about-details h1 {
   color: #000;
   font-size: 25;
   font-weight: bold;
-  
- font-family: 
-
-
 }

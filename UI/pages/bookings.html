@@ -10,33 +10,55 @@
 
   <body>
     <header class="mainheader">
+      <div class="logo">
+        <a href="#">
+          <h1><b>Way Farer</b></h1>
+        </a>
+      </div>
       <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li>
-            <a href="bookings.html"><b>Bookings</b></a>
-          </li>
-          <li><a href="trips.html">Trips</a></li>
-          <li><a href="book.html">Book Ticket</a></li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="contact.html">contact Us</a></li>
-          <li><a href="index.html">logout</a></li>
-        </ul>
+        <div class="menuitems">
+          <ul>
+            <li>
+              <a href="../index.html">Home</a>
+            </li>
+            <li>
+              <a href="bookings.html"><b>Bookings</b></a>
+            </li>
+            <li><a href="trips.html">Trips</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="contact.html">contact Us</a></li>
+          </ul>
+        </div>
       </nav>
+      <form>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search..."
+          title="Type in a name"
+        />
+        <a href="login.html">Log Out</a>
+        <a href="signup.html">Signup</a>
+      </form>
     </header>
 
     <div class="dashboard">
       <div class="container">
         <div class="row2">
           <div class="dashboard-content">
-            <h1 class="underline" style="text-align: center;">
-              #User Bookings
+            <h1 class="underline">
+              Liste Bookings
             </h1>
-
+            <input
+              type="text"
+              id="filter"
+              placeholder="Search Bookings"
+              title="Type in a name"
+            />
             <div class="dashboard-topbar"></div>
 
             <div>
-              <h4>Recent Bookings</h4>
               <table class="table">
                 <thead>
                   <tr>
@@ -84,7 +106,7 @@
                     </td>
                   </tr>
 
-                  <tr class="clickablelink" onclick="location.href='#'">
+                  <tr class="clickablelink2" onclick="location.href='#'">
                     <td><a href="spec.html">1001</a></td>
                     <td><a href="spec.html">Rwamagana</a></td>
                     <td><a href="spec.html">Kigali</a></td>
@@ -108,7 +130,8 @@
                     <td><a href="spec.html">12:30</a></td>
                     <td><a href="spec.html">3500</a></td>
                     <td><a href="spec.html">+250789769787</a></td>
-                    <td><span class="button-delete">Cancered</span></td>
+
+                    <td><span class="Status2">Canceled</span></td>
                     <td>
                       <button class="button-delete" onclick="location.href='#'">
                         Delete
@@ -116,7 +139,7 @@
                     </td>
                   </tr>
 
-                  <tr class="clickablelink" onclick="location.href='#'">
+                  <tr class="clickablelink2" onclick="location.href='#'">
                     <td><a href="spec.html">0999</a></td>
                     <td><a href="spec.html">Butare</a></td>
                     <td><a href="spec.html">Kigali</a></td>
@@ -149,7 +172,7 @@
                   </tr>
                 </tbody>
               </table>
-              <a href="book.html"> Book Ticket</a>
+              <span><a href="book.html"> Book Ticket</a></span>
             </div>
           </div>
         </div>
@@ -158,15 +181,14 @@
   </body>
 
   <div class="footer">
-    <p>
-      © copyright 2019 <a href="aboutus.html"><b> Way Farer.</b></a> All rights
-      Reserve
-    </p>
-
     <div class="icon">
       <a href="#"><img src="../images/facebook.png"/></a>
       <a href="#"><img src="../images/twitter.png"/></a>
       <a href="#"><img src="../images/youtube.png"/></a>
     </div>
+    <p>
+      © copyright 2019 <a href="aboutus.html"><b> Way Farer.</b></a> All rights
+      Reserve
+    </p>
   </div>
 </html>
