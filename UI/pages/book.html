@@ -10,19 +10,42 @@
 
   <body>
     <header class="mainheader">
+      <div class="logo">
+        <a href="#">
+          <h1><b>Way Farer</b></h1>
+        </a>
+      </div>
       <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="bookings.html">Bookings</a></li>
-          <li><a href="trips.html">Trips</a></li>
-          <li>
-            <a href="book.html"><b>Book Ticket</b></a>
-          </li>
-          <li><a href="dashboard.html">Dashboard</a></li>
-          <li><a href="contact.html">contact Us</a></li>
-          <li><a href="login.html">logout</a></li>
-        </ul>
+        <div class="menuitems">
+          <ul>
+            <li>
+              <a href="../index.html">Home</a>
+            </li>
+            <li>
+              <a href="bookings.html">Bookings</a>
+            </li>
+            <li>
+              <a href="trips.html">Trips</a>
+            </li>
+            <li>
+              <a href="book.html"><b>Book Ticket</b></a>
+            </li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="contact.html">contact Us</a></li>
+          </ul>
+        </div>
       </nav>
+      <form>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search..."
+          title="Type in a name"
+        />
+        <a href="login.html">Log Out</a>
+        <a href="signup.html">Signup</a>
+      </form>
     </header>
 
     <div class="book-content">
@@ -165,29 +188,19 @@
             </form>
           </div>
           <br />
-          <p class="line-on-side"><span>Or</span></p>
-
-          <button
-            type="submit"
-            onclick="location.href='bookings.html'"
-            class="button-book large"
-          >
-            View Bookings
-          </button>
         </div>
       </div>
     </div>
   </body>
 
   <div class="footer">
-    <p>
-      © copyright 2019 <a href="aboutus.html"> Way Farer.</a> All rights Reserve
-    </p>
-
     <div class="icon">
       <a href="#"><img src="../images/facebook.png"/></a>
       <a href="#"><img src="../images/twitter.png"/></a>
       <a href="#"><img src="../images/youtube.png"/></a>
     </div>
+    <p>
+      © copyright 2019 <a href="aboutus.html"> Way Farer.</a> All rights Reserve
+    </p>
   </div>
 </html>

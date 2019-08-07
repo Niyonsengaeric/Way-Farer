@@ -10,29 +10,56 @@
 
   <body>
     <header class="mainheader">
+      <div class="logo">
+        <a href="#">
+          <h1><b>Way Farer</b></h1>
+        </a>
+      </div>
       <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="bookings.html">Bookings</a></li>
-          <li><a href="trips.html">Trips</a></li>
-          <li><a href="book.html">Book A Ticket</a></li>
-          <li>
-            <a href="dashboard.html"><b>Dashboard</b></a>
-          </li>
-          <li><a href="contact.html">contact Us</a></li>
-          <li><a href="index.html">logout</a></li>
-        </ul>
+        <div class="menuitems">
+          <ul>
+            <li>
+              <a href="../index.html">Home</a>
+            </li>
+            <li>
+              <a href="bookings.html">Bookings</a>
+            </li>
+            <li>
+              <a href="trips.html">Trips</a>
+            </li>
+            <li><a href="book.html">Book Ticket</a></li>
+            <li>
+              <a href="dashboard.html"><b>Dashboard</b></a>
+            </li>
+            <li><a href="contact.html">contact Us</a></li>
+          </ul>
+        </div>
       </nav>
+      <form>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search..."
+          title="Type in a name"
+        />
+        <a href="login.html">Logout</a>
+        <a href="signup.html">Signup</a>
+      </form>
     </header>
 
     <div class="dashboard">
       <div class="container">
         <div class="row2">
           <div class="dashboard-content">
-            <h1 class="underline" style="text-align: center;">#Bookings</h1>
-
             <div>
               <h4>List Of Bookings Based On Recent</h4>
+              <input
+                type="text"
+                id="filter"
+                placeholder="Search Bookings"
+                title="Type in a name"
+              />
               <table class="table">
                 <thead>
                   <tr>
@@ -50,7 +77,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr class="clickablelink2" onclick="location.href='#'">
                     <td><a href="spec.html">1003</a></td>
                     <td><a href="spec.html">Niyonsenga Eric</a></td>
                     <td><a href="spec.html">10</a></td>
@@ -86,7 +113,7 @@
                     </td>
                   </tr>
 
-                  <tr class="clickablelink" onclick="location.href='#'">
+                  <tr class="clickablelink2" onclick="location.href='#'">
                     <td><a href="spec.html">1001</a></td>
                     <td><a href="spec.html">Byusa Price Dacy</a></td>
                     <td><a href="spec.html">14</a></td>
@@ -114,7 +141,7 @@
                     <td><a href="spec.html">12:30</a></td>
                     <td><a href="spec.html">3500</a></td>
                     <td><a href="spec.html">+250789769787</a></td>
-                    <td><span class="button-delete">Cancered</span></td>
+                    <td><span class="Status2">Canceled</span></td>
                     <td>
                       <button class="button-delete" onclick="location.href='#'">
                         Delete
@@ -122,7 +149,7 @@
                     </td>
                   </tr>
 
-                  <tr class="clickablelink" onclick="location.href='#'">
+                  <tr class="clickablelink2" onclick="location.href='#'">
                     <td><a href="spec.html">0999</a></td>
                     <td><a href="spec.html">Ntwari Hugues</a></td>
                     <td><a href="spec.html">10</a></td>
@@ -168,15 +195,14 @@
   </body>
 
   <div class="footer">
+    <div class="icon">
+      <a href="#"><img src="../images/facebook.png"/></a>
+      <a href="#"><img src="../images/twitter.png"/></a>
+      <a href="#"><img src="../images/youtube.png"/></a>
+    </div>
     <p>
       © copyright 2019 <a href="aboutus.html"><b> Way Farer.</b></a> All rights
       Reserve
     </p>
-
-    <div class="icon">
-      <a href="#"><img src="../images/facebook.png"/></a>
-      <a href="#"><img src=../images/twitter.png"/></a>
-      <a href="#"><img src=../images/youtube.png"/></a>
-    </div>
   </div>
 </html>
