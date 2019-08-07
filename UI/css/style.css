@@ -6,7 +6,7 @@
   --color1: #666666;
   --color2: #999999;
   --mainSpacing: 0.1rem;
-  --mainTransition: all .5s ease;
+  --mainTransition: all 0.5s ease;
 }
 
 body {
@@ -139,7 +139,8 @@ body {
   color: #23b4ca;
 }
 
-.mainheader nav a:link, .mainheader nav a:visited {
+.mainheader nav a:link,
+.mainheader nav a:visited {
   color: var(--mainWhite);
   display: inline-block;
   padding: 10px 20px;
@@ -147,7 +148,8 @@ body {
   text-transform: uppercase;
 }
 
-.mainheader nav a:link, .mainheader nav a:visited:hover {
+.mainheader nav a:link,
+.mainheader nav a:visited:hover {
   color: #23b4ca;
 }
 
@@ -178,7 +180,7 @@ body {
 
 .footer .icon {
   text-align: center;
-  background: #282828
+  background: #282828;
 }
 
 .footer img {
@@ -201,7 +203,7 @@ body {
 }
 
 #recent_newsletter {
-  text-align: center!important;
+  text-align: center !important;
   flex: 0 0 58.333333%;
   width: 100%;
   min-height: 1px;
@@ -218,7 +220,7 @@ body {
 }
 
 .top {
-  text-align: center!important;
+  text-align: center !important;
   position: relative;
   width: 100%;
   min-height: 1px;
@@ -232,12 +234,12 @@ body {
 }
 
 .top h2 {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
   color: inherit;
   font-size: 2rem;
-  text-align: center!important;
+  text-align: center !important;
 }
 
 #body #left {
@@ -250,7 +252,7 @@ body {
 
 #popular {
   float: left;
-  width: 100%
+  width: 100%;
 }
 
 #right .img {
@@ -332,7 +334,7 @@ body {
   position: relative;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
 .popimg .image p {
@@ -377,7 +379,7 @@ body {
   position: relative;
   background-size: cover;
   box-sizing: border-box;
-  background-image: url('../images/bus1.jpg');
+  background-image: url("../images/bus1.jpg");
   float: left;
   width: 100%;
 }
@@ -396,7 +398,7 @@ body {
   align-items: center;
   justify-content: space-between;
   max-width: 1140px;
-  text-align: center!important;
+  text-align: center !important;
 }
 
 .dark-overlay {
@@ -406,7 +408,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  color: #f8f9fa!important;
+  color: #f8f9fa !important;
 }
 
 .row {
@@ -440,10 +442,10 @@ body {
 
 .banner .dark-overlay .container .row form select {
   width: 100%;
-  padding: .5rem 1rem;
+  padding: 0.5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   margin-left: 50px;
   height: 50px;
 }

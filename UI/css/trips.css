@@ -51,19 +51,19 @@ div a {
 .table thead tr {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
-  padding: .75rem;
+  padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 
 .table tbody tr td {
-  padding: .75rem;
+  padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
 }
 
 .table tbody tr td .Status {
-  background: #2ABC5D;
+  background: #2abc5d;
   color: #fff;
   border-radius: 3px;
   padding: 10px 5px 10px 5px;
@@ -99,5 +99,4 @@ tr a {
 tr a:hover {
   text-decoration: none;
   color: #23b4ca;
-  ;
 }

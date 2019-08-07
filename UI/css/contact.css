@@ -34,7 +34,8 @@ body {
   margin-bottom: 10px;
 }
 
-input[type=text], textarea {
+input[type="text"],
+textarea {
   background: var(--mainGrey);
   width: 100%;
   padding: 9px 6px;
@@ -49,7 +50,7 @@ input[type=text], textarea {
   font-size: 17px;
 }
 
-input[type=submit] {
+input[type="submit"] {
   width: 100%;
   background-color: #23b4ca;
   color: white;
@@ -63,7 +64,8 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=text], select {
+input[type="text"],
+select {
   background: var(--mainGrey);
   width: 100%;
   padding: 9px 6px;
