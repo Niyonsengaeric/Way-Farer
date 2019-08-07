@@ -3,27 +3,49 @@
   <meta name="viewport" content="width=device-width">
   <meta name="author" content="Niyonsenga Eric">
   <title>Way Farer </title>
-  <link href="./css/style.css" rel="stylesheet" type="text/css">
-  <link href="./css/resp.css" rel="stylesheet" type="text/css">
-  <link href="./css/aboutus.css" rel="stylesheet" type="text/css">
+  <link href="../css/style.css" rel="stylesheet" type="text/css">
+  <link href="../css/resp.css" rel="stylesheet" type="text/css">
+  <link href="../css/aboutus.css" rel="stylesheet" type="text/css">
 </header>
 
 <body>
 
 
   <header class="mainheader">
+    <div class="logo">
+      <a href="#">
+        <h1><b>Way Farer</b></h1>
+      </a>
+    </div>
     <nav>
-      <ul>
-
-        <li> <a href="index.html">Home</a></li>
-        <li><a href="bookings.html">Bookings</a></li>
-        <li> <a href="book.html">Book Ticket</a></li>
-        <li> <a href="dashboard.html">Dashboard</a></li>
-        <li> <a href="contact.html">contact Us</a></li>
-        <li> <a href="aboutus.html"><b>About Us</b></a></li>
-        <li> <a href="login.html">logout</a></li>
-      </ul>
+      <div class="menuitems">
+        <ul>
+          <li>
+            <a href="../index.html">Home</a>
+          </li>
+          <li>
+            <a href="bookings.html">Bookings</a>
+          </li>
+          <li>
+            <a href="book.html">book Ticket</a>
+            <a href="dashboard.html"></b>Dashboard</b></a>
+            <a href="contact.html"></b>Contact Us</b></a>
+            <a href="aboutus.html"></b>About Us</b></a>
+          </li>
+        </ul>
+      </div>
     </nav>
+    <form>
+      <input
+      type="text"
+      id="myInput"
+      onkeyup="myFunction()"
+      placeholder="Search..."
+      title="Type in a name"
+    />
+      <a href="login.html">Log in</a>
+      <a href="signup.html">Signup</a>
+    </form>
   </header>
   <div class="details-content">
 
@@ -67,13 +89,11 @@
 
 <div class="footer">
 
-  <p>© copyright 2019 <a href="aboutus.html"> Way Farer.</a> All rights Reserve</p>
-
   <div class="icon">
     <a href="#"><img src="../images/facebook.png"></a>
     <a href="#"><img src="../images/twitter.png"></a>
     <a href="#"><img src="../images/youtube.png"></a>
   </div>
+  <p>© copyright 2019 <a href="aboutus.html"> Way Farer.</a> All rights Reserve</p>
 </div>
-
 </html>
