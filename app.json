@@ -13,7 +13,8 @@
       "url": "https://github.com/Niyonsengaeric/Way-Farer/blob/develop/LICENCE.md"
     }
   },
-  "host": "127.0.0.1:4000",
+  "host": "way-farer0.herokuapp.com",
+
   "basePath": "/api/v1",
   "tags": [
     {
@@ -331,7 +332,8 @@
         }
       }
     },
-    "/bookings/{trip_id}": {
+    "/bookings/{id}": {
+
       "delete": {
         "tags": [
           "Booking"
@@ -351,7 +353,7 @@
             "description": "The value to provide in the  header of API request"
           },
           {
-            "name": "trip_id",
+            "name": "id",
             "in": "path",
             "required": true
           }
@@ -383,7 +385,10 @@
         "password": {
           "type": "string"
         },
-        "is_admin": {
+        "phoneNumber": {
+          "type": "string"
+        },
+        "address": {
           "type": "string"
         }
       },
