@@ -63,7 +63,6 @@ class usersController {
 };
 // User log in
 static async loginUser(req, res) {
-// export const loginUser = async (req, res) => {
   const { password } = req.body;
   // ###validate userlogin
   const { error } = validateLogin(req.body);
