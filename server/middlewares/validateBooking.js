@@ -9,4 +9,4 @@ const validatebook = (book) => {
 
   return Joi.validate(book, schema);
 }
-module.exports = validatebook;
+export default validatebook;

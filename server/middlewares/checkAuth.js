@@ -1,15 +1,18 @@
-import jwt from "jsonwebtoken";
-import response from "../helpers/response";
+import jwt from 'jsonwebtoken';
+import response from '../helpers/response';
 
 module.exports = function auth(req, res, next) {
-  const token = req.header("x-auth-token");
-  if (!token) return res.status(401).send("Access denied. no token provided.");
+  const token = req.header('token');
+  if (!token) {
+
+  return response.response(res, 401, 'Access denied. no token provided.', true);
+  }
   try {
     const decoded = jwt.verify(token, process.env.JWT);
     req.user = decoded;
 
     next();
   } catch (ex) {
-    return response.response(res, 401, "invalid token.", true);
+    return response.response(res, 401, 'invalid token.', true);
   }
 };

@@ -1,7 +1,7 @@
-import validate from "../middlewares/validateTrip";
-import trips from "../models/tripsModels";
-import express from "express";
-import response from "../helpers/response";
+import validate from '../middlewares/validateTrip';
+import trips from '../models/tripsModels';
+import express from 'express';
+import response from '../helpers/response';
 const router = express.Router();
 
 class tripscontrolllers {
@@ -32,7 +32,7 @@ class tripscontrolllers {
     trip_date.length > 0 &&
     trip_time.length > 0
   ) {
-    return response.response(res, 401, "trip already registered ", true);
+    return response.response(res, 401, 'trip already registered ', true);
   } else {
     const {
       seating_capacity,
@@ -53,7 +53,7 @@ class tripscontrolllers {
       destination: destination.toUpperCase(),
       trip_date: trip_date,
       fare: fare,
-      status: "ACTIVE",
+      status: 'ACTIVE',
       time: time
     };
 
@@ -67,10 +67,10 @@ static async  cancelTrip(req, res) {
   const { id } = req.params;
   const trip_id = trips.findIndex(trp => trp.id === parseInt(id, 10));
   if (trip_id >= 0) {
-    trips[trip_id].status = "CANCELED";
-    return response.response(res, 200, "Trip cancelled successfully", false);
+    trips[trip_id].status = 'CANCELED';
+    return response.response(res, 200, 'Trip cancelled successfully', false);
   } else {
-    return response.response(res, 404, "Trip not Found!", true);
+    return response.response(res, 404, 'Trip not Found!', true);
   }
 };
 
@@ -83,7 +83,7 @@ static async  spfTrip(req, res) {
   if (trip_id) {
     return response.response(res, 200, trip_id, false);
   } else {
-    return response.response(res, 404, "Trip not Found!", true);
+    return response.response(res, 404, 'Trip not Found!', true);
   }
 };
 }

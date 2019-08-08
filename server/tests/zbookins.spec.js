@@ -19,14 +19,14 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        isAdmin: true
+        is_admin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 4 };
       chai
         .request(app)
         .post("/api/v1/bookings")
-        .set("x-auth-token", Token)
+        .set("token", Token)
         .send(booking)
         .end((err, res) => {
           expect(res.status).to.equal(201);
@@ -42,14 +42,14 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        isAdmin: true
+        is_admin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 4 };
       chai
         .request(app)
         .post("/api/v1/bookings")
-        .set("x-auth-token", Token)
+        .set("token", Token)
         .send(booking)
         .end((err, res) => {
           expect(res.status).to.equal(401);
@@ -65,14 +65,14 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        isAdmin: true
+        is_admin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
 
       chai
         .request(app)
         .post("/api/v1/bookings")
-        .set("x-auth-token", Token)
+        .set("token", Token)
         .end((err, res) => {
           expect(res.status).to.equal(400);
           done();
@@ -87,14 +87,14 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        isAdmin: true
+        is_admin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 40 };
       chai
         .request(app)
         .post("/api/v1/bookings")
-        .set("x-auth-token", Token)
+        .set("token", Token)
         .send(booking)
         .end((err, res) => {
           expect(res.status).to.equal(404);
@@ -110,14 +110,14 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        isAdmin: true
+        is_admin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 2 };
       chai
         .request(app)
         .post("/api/v1/bookings")
-        .set("x-auth-token", Token)
+        .set("token", Token)
         .send(booking)
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -133,7 +133,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        isAdmin: true
+        is_admin: true
       };
 
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
@@ -141,7 +141,7 @@ describe("post Bookings", () => {
       chai
         .request(app)
         .post("/api/v1/bookings")
-        .set("x-auth-token", Token)
+        .set("token", Token)
         .send(booking)
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -160,13 +160,13 @@ describe("get Bookings /", () => {
       last_name: "Eric",
       phoneNumber: "0789769787",
       address: "Kacyiru",
-      isAdmin: true
+      is_admin: true
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/bookings")
-      .set("x-auth-token", Token)
+      .set("token", Token)
       .send()
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -182,13 +182,13 @@ describe("get Bookings /", () => {
       last_name: "PRINCE DACY",
       phoneNumber: "0782314242",
       address: "UMUSAVE",
-      isAdmin: false
+      is_admin: false
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/bookings")
-      .set("x-auth-token", Token)
+      .set("token", Token)
       .send()
       .end((err, res) => {
         expect(res.status).to.equal(200);
@@ -204,13 +204,13 @@ describe("get Bookings /", () => {
       last_name: "PAUL",
       phoneNumber: " +250782314242",
       address: "RUTURUSU",
-      isAdmin: false
+      is_admin: false
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/bookings")
-      .set("x-auth-token", Token)
+      .set("token", Token)
       .send()
       .end((err, res) => {
         expect(res.status).to.equal(404);
@@ -228,13 +228,13 @@ describe("delete A Booking /", () => {
       last_name: "Eric",
       phoneNumber: "0789769787",
       address: "Kacyiru",
-      isAdmin: true
+      is_admin: true
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .delete("/api/v1//bookings/4")
-      .set("x-auth-token", Token)
+      .set("token", Token)
       .end((err, res) => {
         expect(res.status).to.equal(200);
         done();
@@ -249,13 +249,13 @@ describe("delete A Booking /", () => {
       last_name: "Eric",
       phoneNumber: "0789769787",
       address: "Kacyiru",
-      isAdmin: true
+      is_admin: true
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .delete("/api/v1//bookings/1")
-      .set("x-auth-token", Token)
+      .set("token", Token)
       .end((err, res) => {
         expect(res.status).to.equal(404);
         done();

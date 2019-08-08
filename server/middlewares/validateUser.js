@@ -1,5 +1,5 @@
-import Joi from "joi";
-import { join } from "path";
+import Joi from 'joi';
+import { join } from 'path';
 
 function validateUser(user) {
   const schema = {
@@ -31,5 +31,4 @@ function validateUser(user) {
 
   return Joi.validate(user, schema);
 }
-
-module.exports = validateUser;
+export default validateUser;

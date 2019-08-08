@@ -1,11 +1,11 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
-import _ from "lodash";
-import validate from "../middlewares/validateUser";
-import validateLogin from "../middlewares/validateLogin";
-import users from "../models/usersModels";
-import express from "express";
-import response from "../helpers/response";
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import _ from 'lodash';
+import validate from '../middlewares/validateUser';
+import validateLogin from '../middlewares/validateLogin';
+import users from '../models/usersModels';
+import express from 'express';
+import response from '../helpers/response';
 const router = express.Router();
 
 // eslint-disable-next-line
@@ -28,7 +28,7 @@ class usersController {
     return response.response(
       res,
       401,
-      "User with that email already registered",
+      'User with that email already registered',
       true
     );
   } else {
@@ -50,13 +50,15 @@ class usersController {
       password: password,
       phoneNumber: phoneNumber,
       address: address.toUpperCase(),
-      isAdmin: false
+      is_admin: false
     };
     const salt = await bcrypt.genSalt(10);
     addUser.password = await bcrypt.hash(addUser.password, salt);
 
     users.push(addUser);
-    response.response(res, 201, addUser, false);
+    const hideitems=  {...addUser};
+    delete hideitems.password;
+    response.response(res, 201, hideitems, false);
   }
 };
 // User log in
@@ -75,7 +77,7 @@ static async loginUser(req, res) {
   if (user.length > 0) {
     if (bcrypt.compareSync(password, user[0].password)) {
       const token = jwt.sign(
-        { id: user[0].id, isAdmin: user[0].isAdmin },
+        { id: user[0].id, is_admin: user[0].is_admin },
         process.env.JWT
       );
       {
@@ -89,10 +91,10 @@ static async loginUser(req, res) {
         return response.response(res, 200, responses, false);
       }
     } else {
-      return response.response(res, 401, "Invalid user or password", true);
+      return response.response(res, 401, 'Invalid user or password', true);
     }
   } else {
-    return response.response(res, 401, "Invalid user or password", true);
+    return response.response(res, 401, 'Invalid user or password', true);
   }
 };
 }

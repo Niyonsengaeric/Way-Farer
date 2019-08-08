@@ -1,6 +1,6 @@
-import express from "express";
-import auth from "../middlewares/checkAuth";
-import admin from "../middlewares/checkAdmin";
+import express from 'express';
+import auth from '../middlewares/checkAuth';
+import admin from '../middlewares/checkAdmin';
 import tripscontrolllers from '../controllers/tripsControllers';
 const {
     regTrip,
@@ -11,11 +11,11 @@ const {
 
 const router = express.Router();
 
-router.post("/trips", [auth, admin], regTrip);
+router.post('/trips', [auth, admin], regTrip);
 
-router.patch("/trips/:id/cancel", [auth, admin], cancelTrip);
-router.get("/trips", auth, getTrips);
-router.get("/trips/:id", auth, spfTrip);
+router.patch('/trips/:id/cancel', [auth, admin], cancelTrip);
+router.get('/trips', auth, getTrips);
+router.get('/trips/:id', auth, spfTrip);
 
 
 

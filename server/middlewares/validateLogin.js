@@ -15,5 +15,5 @@ function validatelogin(user) {
   };
 
   return Joi.validate(user, schema);
-}
-module.exports = validatelogin;
+} 
+export default validatelogin;
