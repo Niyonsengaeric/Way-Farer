@@ -58,11 +58,6 @@ class bookingsController {
   const userphone = finduser.phoneNumber;
 
   // console.log(userid)
-if( req.user.is_admin='true'){
-  return response.response(res, 403, 'not allowed to perform this action', true);
-
-}
-  console.log(req.user.is_admin)
   // check for booking and save
   if (seating_capacity <= 0) {
     return response.response(

@@ -19,7 +19,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        is_admin: true
+        isAdmin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 4 };
@@ -42,7 +42,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        is_admin: true
+        isAdmin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 4 };
@@ -65,7 +65,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        is_admin: true
+        isAdmin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
 
@@ -87,7 +87,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        is_admin: true
+        isAdmin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 40 };
@@ -110,7 +110,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        is_admin: true
+        isAdmin: true
       };
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       const booking = { tripId: 2 };
@@ -133,7 +133,7 @@ describe("post Bookings", () => {
         last_name: "Eric",
         phoneNumber: "0789769787",
         address: "Kacyiru",
-        is_admin: true
+        isAdmin: true
       };
 
       const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
@@ -160,7 +160,7 @@ describe("get Bookings /", () => {
       last_name: "Eric",
       phoneNumber: "0789769787",
       address: "Kacyiru",
-      is_admin: true
+      isAdmin: true
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
@@ -182,7 +182,7 @@ describe("get Bookings /", () => {
       last_name: "PRINCE DACY",
       phoneNumber: "0782314242",
       address: "UMUSAVE",
-      is_admin: false
+      isAdmin: false
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
@@ -204,7 +204,7 @@ describe("get Bookings /", () => {
       last_name: "PAUL",
       phoneNumber: " +250782314242",
       address: "RUTURUSU",
-      is_admin: false
+      isAdmin: false
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
@@ -228,7 +228,7 @@ describe("delete A Booking /", () => {
       last_name: "Eric",
       phoneNumber: "0789769787",
       address: "Kacyiru",
-      is_admin: true
+      isAdmin: true
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
@@ -249,7 +249,7 @@ describe("delete A Booking /", () => {
       last_name: "Eric",
       phoneNumber: "0789769787",
       address: "Kacyiru",
-      is_admin: true
+      isAdmin: true
     };
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
