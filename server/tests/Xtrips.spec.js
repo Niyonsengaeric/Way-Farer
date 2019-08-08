@@ -29,7 +29,7 @@ describe("post", () => {
         fare: 3400,
         time: "15:45"
       };
-      const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+      const Token = jwt.sign(Signed,process.env.JWT, { expiresIn: "24h" });
       chai
         .request(app)
         .post("/api/v1/trips")
@@ -60,7 +60,7 @@ describe("post", () => {
         fare: 3400,
         time: "10:20"
       };
-      const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+      const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       chai
         .request(app)
         .post("/api/v1/trips")
@@ -90,7 +90,7 @@ describe("post", () => {
         fare: 3400,
         time: "15:45"
       };
-      const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+      const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       chai
         .request(app)
         .post("/api/v1/trips")
@@ -121,7 +121,7 @@ describe("post", () => {
         fare: 3400,
         time: "15:45"
       };
-      const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+      const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
       chai
         .request(app)
         .post("/api/v1/trips")
@@ -146,7 +146,7 @@ describe("PATCH /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed,process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .patch("/api/v1/trips/1/cancel")
@@ -168,7 +168,7 @@ describe("PATCH /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .patch("/api/v1/trips/17/cancel")
@@ -190,7 +190,7 @@ describe("PATCH /", () => {
       address: "UMUSAVE",
       isAdmin: false
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .patch("/api/v1/trips/1/cancel")
@@ -214,7 +214,7 @@ describe("get /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed,process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/trips")
@@ -236,7 +236,7 @@ describe("get /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/trips/1")
@@ -258,7 +258,7 @@ describe("get /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/trips/10")
@@ -280,7 +280,7 @@ describe("get /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" });
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" });
     chai
       .request(app)
       .get("/api/v1/trips/10")
@@ -301,7 +301,7 @@ describe("get /", () => {
       address: "Kacyiru",
       isAdmin: true
     };
-    const Token = 'jwt.sign(Signed, "jwtPrivatekey", { expiresIn: "24h" })';
+    const Token = 'jwt.sign(Signed, process.env.JWT, { expiresIn: "24h" })';
     chai
       .request(app)
       .get("/api/v1/trips/10")
@@ -313,3 +313,4 @@ describe("get /", () => {
       });
   });
 });
+

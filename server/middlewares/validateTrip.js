@@ -20,5 +20,4 @@ function validateTrip(trip) {
 
   return Joi.validate(trip, schema);
 }
-
 module.exports = validateTrip;
