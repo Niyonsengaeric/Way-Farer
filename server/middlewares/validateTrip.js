@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 function validateTrip(trip) {
   const schema = {
@@ -20,5 +20,4 @@ function validateTrip(trip) {
 
   return Joi.validate(trip, schema);
 }
-
-module.exports = validateTrip;
+export default validateTrip;

@@ -1,15 +1,21 @@
-import express from "express";
+import express from 'express';
+import auth from '../middlewares/checkAuth';
+import admin from '../middlewares/checkAdmin';
+import tripscontrolllers from '../controllers/tripsControllers';
+const {
+    regTrip,
+    cancelTrip,
+    getTrips,
+    spfTrip
+  } = tripscontrolllers;
 
-import { regTrip, cancelTrip, getTrips, spfTrip } from "../controllers/trips";
-import auth from "../middlewares/auth";
-import admin from "../middlewares/admin";
 const router = express.Router();
 
-router.post("/trips", [auth, admin], regTrip);
+router.post('/trips', [auth, admin], regTrip);
 
-router.patch("/trips/:id/cancel", [auth, admin], cancelTrip);
-router.get("/trips", auth, getTrips);
-router.get("/trips/:id", auth, spfTrip);
+router.patch('/trips/:id/cancel', [auth, admin], cancelTrip);
+router.get('/trips', auth, getTrips);
+router.get('/trips/:id', auth, spfTrip);
 
 
 

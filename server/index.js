@@ -4,7 +4,18 @@ import bodyParser from 'body-parser';
 import users from './routes/users';
 import trips from './routes/trips';
 import bookings from './routes/bookings'
+
+import Sui from 'swagger-ui-express';
+import documentation from '../app.json';
+import Cors from 'cors';
+
+import dotenv from 'dotenv';
+dotenv.config()
 const app = express();
+
+
+app.use('/documentation', Sui.serve, Sui.setup(documentation));
+app.use(Cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -27,7 +38,7 @@ app.use((error, req, res, next) => {
   next();
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(`App is Running on port ${PORT}`);
