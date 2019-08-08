@@ -1,8 +1,14 @@
 import express from "express";
+import auth from "../middlewares/checkAuth";
+import admin from "../middlewares/checkAdmin";
+import tripscontrolllers from '../controllers/tripsControllers';
+const {
+    regTrip,
+    cancelTrip,
+    getTrips,
+    spfTrip
+  } = tripscontrolllers;
 
-import { regTrip, cancelTrip, getTrips, spfTrip } from "../controllers/trips";
-import auth from "../middlewares/auth";
-import admin from "../middlewares/admin";
 const router = express.Router();
 
 router.post("/trips", [auth, admin], regTrip);

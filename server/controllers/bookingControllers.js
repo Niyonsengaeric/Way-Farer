@@ -1,15 +1,19 @@
 import moment from "moment";
 import _ from "lodash";
 import validate from "../middlewares/validateBooking";
-import users from "../models/users";
-import trips from "../models/trips";
-import feedback from "../helpers/feedback";
-import bookings from "../models/bookings";
+import users from "../models/usersModels";
+import trips from "../models/tripsModels";
+import response from "../helpers/response";
+import bookings from "../models/bookingsModels";
 
-export const book = (req, res) => {
+class bookingsController {
+  // view all properties
+  static async book(req, res) {
+
+// export const book = (req, res) => {
   const { error } = validate(req.body);
   if (error) {
-    return feedback.response(res, 400, `${error.details[0].message}`, true);
+    return response.response(res, 400, `${error.details[0].message}`, true);
   }
 
   // // ###check trip ID
@@ -19,15 +23,13 @@ export const book = (req, res) => {
   // check if trip is activated*
 
   if (findtripid.status == "CANCELED") {
-    return feedback.response(
+    return response.response(
       res,
       400,
       "TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP",
       true
     );
   }
-
-  // if (!findtripid.status=)
 
   // console.log(findtripid.id)
 
@@ -54,7 +56,7 @@ export const book = (req, res) => {
 
   // check for booking and save
   if (seating_capacity <= 0) {
-    return feedback.response(
+    return response.response(
       res,
       400,
       "SORRY!!! No seats left on the trip",
@@ -68,10 +70,9 @@ export const book = (req, res) => {
   if (!book) {
     // ##### checking for left Seatings
 
-    // ###########################
-
     const addBooking = {
-      id: bookings.length + 1,
+      // id:Math.floor(Math.random() * 10000000),
+      id:bookings.length + 1,
       booking_date: moment().format(),
       first_name: firstname.toUpperCase(),
       last_name: lastname.toUpperCase(),
@@ -95,33 +96,29 @@ export const book = (req, res) => {
         trips[updtrip].seating_capacity = seating_capacity - 1;
         // console.log(updtrip);
 
-        return feedback.response(res, 201, addBooking, false);
+        return response.response(res, 201, addBooking, false);
       }
     }
   } else {
-    return feedback.response(res, 401, "booking already made!", true);
+    return response.response(res, 401, "booking already made!", true);
   }
 };
-
-export const getbookings = (req, res) => {
+static async getbookings(req, res) {
   // ###Display all bookings made users //sa admin
   if (req.user.isAdmin) {
-    return feedback.response(res, 200, bookings, false);
+    return response.response(res, 200, bookings, false);
   }
-
   // ###Display bookings  user for user only
-
   const finduserid = bookings.filter(
     finduserid => finduserid.user_id === req.user.id
   );
   if (finduserid.length > 0) {
-    return feedback.response(res, 200, finduserid, false);
+    return response.response(res, 200, finduserid, false);
   }
 
-  return feedback.response(res, 404, "no bookings found", true);
+  return response.response(res, 404, "no bookings found", true);
 };
-
-export const deletebooking = (req, res) => {
+static async deletebooking(req, res) {
   // ###finding booking index
   const { id } = req.params;
   const findbookingindex = bookings.findIndex(
@@ -134,6 +131,8 @@ export const deletebooking = (req, res) => {
     bookings.splice(findbookingindex, 1);
     return res.status(200).send("Booking deleted successfully");
   } else {
-    return feedback.response(res, 404, "Booking not Found!", true);
+    return response.response(res, 404, "Booking not Found!", true);
   }
 };
+}
+export default bookingsController;
