@@ -4,8 +4,17 @@ import bodyParser from 'body-parser';
 import users from './routes/users';
 import trips from './routes/trips';
 import bookings from './routes/bookings'
+
+import Sui from 'swagger-ui-express';
+import documentation from '../app.json';
+import Cors from 'cors';
+
 require('dotenv').config();
 const app = express();
+
+
+app.use('/documentation', Sui.serve, Sui.setup(documentation));
+app.use(Cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
