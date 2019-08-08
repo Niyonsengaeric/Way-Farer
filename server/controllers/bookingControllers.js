@@ -36,8 +36,6 @@ class bookingsController {
     );
   }
 
-  // console.log(findtripid.id)
-
   const buslicence = findtripid.bus_license_number;
   const { origin } = findtripid;
   const { destination } = findtripid;
@@ -57,7 +55,6 @@ class bookingsController {
   const useremail = finduser.email;
   const userphone = finduser.phoneNumber;
 
-  // console.log(userid)
   // check for booking and save
   if (seating_capacity <= 0) {
     return response.response(
@@ -76,7 +73,6 @@ class bookingsController {
     // ##### checking for left Seatings
 
     const addBooking = {
-      // id:Math.floor(Math.random() * 10000000),
       id:bookings.length + 1,
       booking_date: moment().format(),
       first_name: firstname.toUpperCase(),
@@ -99,7 +95,6 @@ class bookingsController {
       const updtrip = trips.findIndex(updtrip => updtrip.id == tripid);
       if (updtrip >= 0) {
         trips[updtrip].seating_capacity = seating_capacity - 1;
-        // console.log(updtrip);
 
         return response.response(res, 201, addBooking, false);
       }
@@ -124,7 +119,6 @@ static async getbookings(req, res) {
   return response.response(res, 404, 'no bookings found', true);
 };
 static async deletebooking(req, res) {
-  // ###finding booking index
   const { id } = req.params;
   const findbookingindex = bookings.findIndex(
     findbooking =>

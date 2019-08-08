@@ -9,7 +9,8 @@ import Sui from 'swagger-ui-express';
 import documentation from '../app.json';
 import Cors from 'cors';
 
-require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config()
 const app = express();
 
 

@@ -68,7 +68,6 @@ static async loginUser(req, res) {
   const { error } = validateLogin(req.body);
   if (error)
     return response.response(res, 400, `${error.details[0].message}`, true);
-  // responses.response(res, 401, true)
 
   const user = await users.filter(
     user => user.email.toLowerCase() === req.body.email.toLowerCase()
