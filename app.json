@@ -384,7 +384,7 @@
           "type": "string"
         },
         "phoneNumber": {
-          "type": "string"
+          "type": "integer"
         },
         "address": {
           "type": "string"
