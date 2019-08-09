@@ -8,11 +8,11 @@ import bookings from '../models/bookingsModels';
 
 class bookingsController {
   // view all properties
-  static async book(req, res) {
-  
+  static async book(req, res) {  
   const { error } = validate(req.body);
   if (error) {
     return response.response(res, 422, `${error.details[0].message}`, true);
+
   }
 
   // // ###check trip ID
@@ -29,6 +29,7 @@ class bookingsController {
     return response.response(
       res,
       406,
+
       'TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP',
       true
     );
