@@ -9,7 +9,7 @@ class tripscontrolllers {
 // export const regTrip = async (req, res) => {
   const { error } = validate(req.body);
   if (error)
-    return response.response(res, 400, `${error.details[0].message}`, true);
+    return response.response(res, 422, `${error.details[0].message}`, true);
   let trip_origin = await trips.filter(
     trip_origin =>
       trip_origin.origin.toUpperCase() === req.body.origin.toUpperCase()
@@ -32,7 +32,7 @@ class tripscontrolllers {
     trip_date.length > 0 &&
     trip_time.length > 0
   ) {
-    return response.response(res, 401, 'trip already registered ', true);
+    return response.response(res, 409, 'trip already registered ', true);
   } else {
     const {
       seating_capacity,
@@ -45,7 +45,6 @@ class tripscontrolllers {
     } = req.body;
 
     const addTrip = {
-      // id:Math.floor(Math.random() * 10000000),
       id:trips.length + 1,
       seating_capacity: seating_capacity,
       bus_license_number: bus_license_number.toUpperCase(),

@@ -146,7 +146,7 @@
           "201": {
             "description": "Trip created successfully"
           },
-          "403": {
+          "401": {
             "description": "User not allowed to perform action"
           }
         }

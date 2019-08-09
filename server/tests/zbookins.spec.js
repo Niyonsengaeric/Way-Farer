@@ -34,7 +34,7 @@ describe("post Bookings", () => {
         });
     });
 
-    it("It should return 401 if the user has already book a seat on a trip ", done => {
+    it("It should return 409 if the user has already book a seat on a trip ", done => {
       const Signed = {
         id: 6,
         email: "newuser@gmail.com",
@@ -52,12 +52,12 @@ describe("post Bookings", () => {
         .set("token", Token)
         .send(booking)
         .end((err, res) => {
-          expect(res.status).to.equal(401);
+          expect(res.status).to.equal(409);
           done();
         });
     });
 
-    it("It should return 400 if trip id is not provided ", done => {
+    it("It should return 422 if trip id is not provided ", done => {
       const Signed = {
         id: 6,
         email: "newuser@gmail.com",
@@ -74,7 +74,7 @@ describe("post Bookings", () => {
         .post("/api/v1/bookings")
         .set("token", Token)
         .end((err, res) => {
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(422);
           done();
         });
     });
@@ -102,7 +102,7 @@ describe("post Bookings", () => {
         });
     });
 
-    it("It should return 400 if trip has been canceled ", done => {
+    it("It should return 406 if trip has been canceled ", done => {
       const Signed = {
         id: 6,
         email: "newuser@gmail.com",
@@ -120,12 +120,12 @@ describe("post Bookings", () => {
         .set("token", Token)
         .send(booking)
         .end((err, res) => {
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(406);
           done();
         });
     });
 
-    it("It should return 400 when the seating capacity <=0 ", done => {
+    it("It should return 406 when the seating capacity <=0 ", done => {
       const Signed = {
         id: 6,
         email: "newuser@gmail.com",
@@ -144,7 +144,7 @@ describe("post Bookings", () => {
         .set("token", Token)
         .send(booking)
         .end((err, res) => {
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(406);
           done();
         });
     });

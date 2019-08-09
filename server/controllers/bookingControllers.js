@@ -9,12 +9,10 @@ import bookings from '../models/bookingsModels';
 class bookingsController {
   // view all properties
   static async book(req, res) {
-
-// export const book = (req, res) => {
   
   const { error } = validate(req.body);
   if (error) {
-    return response.response(res, 400, `${error.details[0].message}`, true);
+    return response.response(res, 422, `${error.details[0].message}`, true);
   }
 
   // // ###check trip ID
@@ -30,7 +28,7 @@ class bookingsController {
   if (findtripid.status == 'CANCELED') {
     return response.response(
       res,
-      400,
+      406,
       'TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP',
       true
     );
@@ -59,7 +57,7 @@ class bookingsController {
   if (seating_capacity <= 0) {
     return response.response(
       res,
-      400,
+      406,
       'SORRY!!! No seats left on the trip',
       true
     );
@@ -100,7 +98,7 @@ class bookingsController {
       }
     }
   } else {
-    return response.response(res, 401, 'booking already made!', true);
+    return response.response(res, 409, 'booking already made!', true);
   }
 };
 static async getbookings(req, res) {

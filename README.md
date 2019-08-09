@@ -74,16 +74,19 @@ WayFarer is a Public Bus Transportation Booking Service.
 
 ### Links.
 
-1.Gh-pages.
+### 1.Gh-pages.
 https://niyonsengaeric.github.io/Way-Farer/UI/
 
-2.Pivotal Tracker.
+### 2.Pivotal Tracker.
 https://www.pivotaltracker.com/n/projects/2370303
+
+### 3.API Endpoints deployed to Heroku
+https://way-farer0.herokuapp.com/documentation/
 
 ## How it Works.
 
 OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with different pages.
-
+-----------------------------------------------------
 # **Author**
 
 ## **NIYONSENGA ERIC**
