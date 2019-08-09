@@ -10,6 +10,7 @@ class tripscontrolllers {
   const { error } = validate(req.body);
   if (error)
     return response.response(res, 422, `${error.details[0].message}`, true);
+
   let trip_origin = await trips.filter(
     trip_origin =>
       trip_origin.origin.toUpperCase() === req.body.origin.toUpperCase()
