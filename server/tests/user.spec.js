@@ -67,7 +67,7 @@ describe('POST /', () => {
       .post('/api/v1/auth/signup')
       .send(user)
       .end((err, res) => {
-        expect(res.statusCode).to.equal(401);
+        expect(res.statusCode).to.equal(409);
         done();
       });
   });
@@ -108,7 +108,7 @@ describe('POST /', () => {
       .send(user)
       .end((err, res) => {
         // console.log(users);
-        expect(res.statusCode).to.equal(400);
+        expect(res.statusCode).to.equal(422);
         done();
       });
   });
@@ -181,7 +181,7 @@ describe('POST /', () => {
       });
   });
 
-  it(' it should return 400 for invalid email and password', done => {
+  it(' it should return 422 for invalid email and password', done => {
     const user = {
       email: '',
       password: ''
@@ -192,12 +192,12 @@ describe('POST /', () => {
       .post('/api/v1/auth/signin')
       .send(user)
       .end((err, res) => {
-        expect(res.statusCode).to.equal(400);
+        expect(res.statusCode).to.equal(422);
         done();
       });
   });
 
-  it('it should return 400 for invalid email ', done => {
+  it('it should return 422 for invalid email ', done => {
     const user = {
       email: '',
       password: '3456six'
@@ -208,7 +208,7 @@ describe('POST /', () => {
       .post('/api/v1/auth/signin')
       .send(user)
       .end((err, res) => {
-        expect(res.statusCode).to.equal(400);
+        expect(res.statusCode).to.equal(422);
         done();
       });
   });

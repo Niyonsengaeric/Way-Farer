@@ -17,7 +17,7 @@ class usersController {
   const { error } = validate(req.body);
 
   if (error)
-    return response.response(res, 400, `${error.details[0].message}`, true);
+    return response.response(res, 422, `${error.details[0].message}`, true);
 
   // (error.details[0].message
 
@@ -27,7 +27,7 @@ class usersController {
   if (user.length > 0) {
     return response.response(
       res,
-      401,
+      409,
       'User with that email already registered',
       true
     );
@@ -67,7 +67,7 @@ static async loginUser(req, res) {
   // ###validate userlogin
   const { error } = validateLogin(req.body);
   if (error)
-    return response.response(res, 400, `${error.details[0].message}`, true);
+    return response.response(res, 422, `${error.details[0].message}`, true);
 
   const user = await users.filter(
     user => user.email.toLowerCase() === req.body.email.toLowerCase()

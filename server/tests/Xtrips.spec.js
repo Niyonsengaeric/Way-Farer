@@ -72,7 +72,7 @@ describe('post', () => {
         });
     });
 
-    it('It should return 400 if there is no seating capacity', done => {
+    it('It should return 422 if there is no seating capacity', done => {
       const Signed = {
         id: 6,
         email: 'newuser@gmail.com',
@@ -97,12 +97,12 @@ describe('post', () => {
         .set('token', Token)
         .send(trip)
         .end((err, res) => {
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(422);
           done();
         });
     });
 
-    it('It should return 401 if the trip is already saved ', done => {
+    it('It should return 409 if the trip is already saved ', done => {
       const Signed = {
         id: 6,
         email: 'newuser@gmail.com',
@@ -128,7 +128,7 @@ describe('post', () => {
         .set('token', Token)
         .send(trip)
         .end((err, res) => {
-          expect(res.status).to.equal(401);
+          expect(res.status).to.equal(409);
           done();
         });
     });
@@ -180,7 +180,8 @@ describe('PATCH /', () => {
       });
   });
 
-  it('It should return 403 if you are not admin ', done => {
+  it('It should return 401 if you are not admin ', done => {
+
     const Signed = {
       id: 1,
       email: 'byusa@gmail.com',
@@ -197,7 +198,7 @@ describe('PATCH /', () => {
       .set('token', Token)
       .send()
       .end((err, res) => {
-        expect(res.status).to.equal(403);
+        expect(res.status).to.equal(401);
         done();
       });
   });
