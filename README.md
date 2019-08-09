@@ -85,8 +85,8 @@ https://way-farer0.herokuapp.com/documentation/
 
 ## How it Works.
 
-OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with different pages.
------------------------------------------------------
+ OPEN https://niyonsengaeric.github.io/Way-Farer/UI/ Link and start navigate with different pages.
+
 # **Author**
 
 ## **NIYONSENGA ERIC**
