@@ -97,6 +97,7 @@ body {
   background: rgb(35, 150, 79);
   border-radius: 5px;
   float: left;
+  padding: 5px;
 }
 
 .mainheader form {
