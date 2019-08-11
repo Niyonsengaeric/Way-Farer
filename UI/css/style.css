@@ -97,6 +97,7 @@ body {
   background: rgb(35, 150, 79);
   border-radius: 5px;
   float: left;
+  padding: 5px;
 }
 
 .mainheader form {
@@ -148,10 +149,10 @@ body {
   text-transform: uppercase;
 }
 
-.mainheader nav a:link,
+/* .mainheader nav a:link,
 .mainheader nav a:visited:hover {
   color: #23b4ca;
-}
+} */
 
 .footer {
   float: left;
