@@ -28,7 +28,7 @@
     "url": "https://github.com/Niyonsengaeric/Way-Farer/issues"
   },
   "homepage": "https://github.com/Niyonsengaeric/Way-Farer#readme",
-  "dependencies": {    
+  "dependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",

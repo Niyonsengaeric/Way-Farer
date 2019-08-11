@@ -11,7 +11,7 @@ class bookingsController {
   static async book(req, res) {  
   const { error } = validate(req.body);
   if (error) {
-    return response.response(res, 422, `${error.details[0].message}`, true);
+    return response.response(res, 422,'error', `${error.details[0].message}`, true);
 
   }
 
@@ -21,14 +21,14 @@ class bookingsController {
   if (!findtripid) 
  { 
    
-  return response.response(res, 404, 'No trip found!', true);
+  return response.response(res, 404,'error', 'No trip found!', true);
 }
   // check if trip is activated*
 
   if (findtripid.status == 'CANCELED') {
     return response.response(
       res,
-      406,
+      406,'error',
 
       'TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP',
       true
@@ -58,7 +58,7 @@ class bookingsController {
   if (seating_capacity <= 0) {
     return response.response(
       res,
-      406,
+      406,'error',
       'SORRY!!! No seats left on the trip',
       true
     );
@@ -95,11 +95,11 @@ class bookingsController {
       if (updtrip >= 0) {
         trips[updtrip].seating_capacity = seating_capacity - 1;
 
-        return response.response(res, 201, addBooking, false);
+        return response.response(res, 201,'success', addBooking, false);
       }
     }
   } else {
-    return response.response(res, 409, 'booking already made!', true);
+    return response.response(res, 409,'error', 'booking already made!', true);
   }
 };
 static async getbookings(req, res) {
@@ -112,10 +112,10 @@ static async getbookings(req, res) {
 
 
   if (finduserid.length > 0) {
-    return response.response(res, 200, finduserid, false);
+    return response.response(res, 200,'success', finduserid, false);
   }
 
-  return response.response(res, 404, 'no bookings found', true);
+  return response.response(res, 404,'error', 'no bookings found', true);
 };
 static async deletebooking(req, res) {
   const { id } = req.params;
@@ -127,9 +127,9 @@ static async deletebooking(req, res) {
   //###delete a Booking
   if (findbookingindex !== -1) {
     bookings.splice(findbookingindex, 1);
-return response.response(res, 200, 'Booking deleted successfully', false);
+return response.response(res, 200,'success', 'Booking deleted successfully', false);
   } else {
-    return response.response(res, 404, 'Booking not Found!', true);
+    return response.response(res, 404,'error', 'Booking not Found!', true);
   }
 };
 }

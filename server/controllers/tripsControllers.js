@@ -9,7 +9,7 @@ class tripscontrolllers {
 // export const regTrip = async (req, res) => {
   const { error } = validate(req.body);
   if (error)
-    return response.response(res, 422, `${error.details[0].message}`, true);
+    return response.response(res, 422,'error', `${error.details[0].message}`, true);
 
   let trip_origin = await trips.filter(
     trip_origin =>
@@ -33,7 +33,7 @@ class tripscontrolllers {
     trip_date.length > 0 &&
     trip_time.length > 0
   ) {
-    return response.response(res, 409, 'trip already registered ', true);
+    return response.response(res, 409,'error', 'trip already registered ', true);
   } else {
     const {
       seating_capacity,
@@ -59,7 +59,7 @@ class tripscontrolllers {
 
     trips.push(addTrip);
 
-    return response.response(res, 201, addTrip, false);
+    return response.response(res, 201,'success', addTrip, false);
   }
 };
 
@@ -68,22 +68,22 @@ static async  cancelTrip(req, res) {
   const trip_id = trips.findIndex(trp => trp.id === parseInt(id, 10));
   if (trip_id >= 0) {
     trips[trip_id].status = 'CANCELED';
-    return response.response(res, 200, 'Trip cancelled successfully', false);
+    return response.response(res, 200,'success', 'Trip cancelled successfully', false);
   } else {
-    return response.response(res, 404, 'Trip not Found!', true);
+    return response.response(res, 404,'error', 'Trip not Found!', true);
   }
 };
 
 static async  getTrips(req, res) {
-  return response.response(res, 200, trips, false);
+  return response.response(res, 200,'success', trips, false);
 };
 static async  spfTrip(req, res) {
   const { id } = req.params;
   const trip_id = trips.find(trp => trp.id === parseInt(id, 10));
   if (trip_id) {
-    return response.response(res, 200, trip_id, false);
+    return response.response(res, 200,'success', trip_id, false);
   } else {
-    return response.response(res, 404, 'Trip not Found!', true);
+    return response.response(res, 404,'error', 'Trip not Found!', true);
   }
 };
 }

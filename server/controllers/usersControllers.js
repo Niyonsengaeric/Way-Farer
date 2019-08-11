@@ -17,7 +17,7 @@ class usersController {
   const { error } = validate(req.body);
 
   if (error)
-    return response.response(res, 422, `${error.details[0].message}`, true);
+    return response.response(res, 422,'error', `${error.details[0].message}`, true);
 
   // (error.details[0].message
 
@@ -27,7 +27,7 @@ class usersController {
   if (user.length > 0) {
     return response.response(
       res,
-      409,
+      409,'error',
       'User with that email already registered',
       true
     );
@@ -58,7 +58,7 @@ class usersController {
     users.push(addUser);
     const hideitems=  {...addUser};
     delete hideitems.password;
-    response.response(res, 201, hideitems, false);
+    response.response(res, 201,'success', hideitems, false);
   }
 };
 // User log in
@@ -67,7 +67,7 @@ static async loginUser(req, res) {
   // ###validate userlogin
   const { error } = validateLogin(req.body);
   if (error)
-    return response.response(res, 422, `${error.details[0].message}`, true);
+    return response.response(res, 422,'error', `${error.details[0].message}`, true);
 
   const user = await users.filter(
     user => user.email.toLowerCase() === req.body.email.toLowerCase()
@@ -86,13 +86,13 @@ static async loginUser(req, res) {
           token
         };
 
-        return response.response(res, 200, responses, false);
+        return response.response(res, 200,'success', responses, false);
       }
     } else {
-      return response.response(res, 401, 'Invalid user or password', true);
+      return response.response(res, 401,'error', 'Invalid user or password', true);
     }
   } else {
-    return response.response(res, 401, 'Invalid user or password', true);
+    return response.response(res, 401,'error', 'Invalid user or password', true);
   }
 };
 }

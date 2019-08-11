@@ -5,7 +5,7 @@ module.exports = function auth(req, res, next) {
   const token = req.header('token');
   if (!token) {
 
-  return response.response(res, 401, 'Access denied. no token provided.', true);
+  return response.response(res, 401,'error', 'Access denied. no token provided.', true);
   }
   try {
     const decoded = jwt.verify(token, process.env.JWT);
@@ -13,6 +13,6 @@ module.exports = function auth(req, res, next) {
 
     next();
   } catch (ex) {
-    return response.response(res, 401, 'invalid token.', true);
+    return response.response(res, 401,'error', 'invalid token.', true);
   }
 };
