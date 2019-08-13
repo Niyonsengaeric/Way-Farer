@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import Client from '../config/index';
 
-import { tables,recordUser } from './tableQueries';
+import { tables, } from './tableQueries';
 
 dotenv.config();
 Client.connect();
@@ -14,14 +14,7 @@ export const createTables = () => {
     })
     .catch();
 };
-export const insertadmin = () => {
-  
-  Client.query(recordUser)
-    .then(() =>{
-      Client.end();
-    })
-    .catch();
-};
+
 //Delete them
 export const tearDown = () => {
   const deleteQuery = 'DROP TABLE IF EXISTS users, trips,  bookings CASCADE';

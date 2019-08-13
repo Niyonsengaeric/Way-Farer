@@ -51,7 +51,7 @@ class tripscontrolllers {
   } else {
 
     let recordTrip = client.query('INSERT INTO trips(seating_capacity, bus_license_number, origin, destination, trip_date, fare,status, time)VALUES($1,$2,$3,$4,$5,$6,$7,$8)',[
-      req.body.seating_capacity, req.body.bus_license_number, req.body.origin, req.body.destination, req.body.trip_date, req.body.fare, 'CANCELED' ,req.body.time,
+      req.body.seating_capacity, req.body.bus_license_number, req.body.origin, req.body.destination, req.body.trip_date, req.body.fare, 'ACTIVE' ,req.body.time,
     ]); 
     if (recordTrip){ 
       const payload= {
@@ -62,7 +62,7 @@ class tripscontrolllers {
         destination:req.body.destination,
         trip_date:req.body.trip_date,
         fare:req.body.fare,
-        status:'CANCELED',
+        status:'active',
         time:req.body.time,
       }
 

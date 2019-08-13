@@ -15,8 +15,6 @@
     "lint": "eslint .",
     "copydev": "babel-node ./server/models/index.js createTables",
     "deletedev": "babel-node ./server/models/index.js tearDown",
-    "copytest": " babel-node ./server/models/index.js createTables",
-    "insadmin": " babel-node ./server/models/index.js insertadmin ",
     "deletetest": "cross-env NODE_ENV=testing babel-node ./server/models/index.js tearDown",
     "lint:fix": "eslint . --fix",
     "test": "npm run deletedev && npm run copydev && nyc --reporter=html --reporter=text mocha --require @babel/register --timeout 100000 server/tests/ --exit",

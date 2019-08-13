@@ -48,6 +48,7 @@ class bookingsController {
 
 
  }
+ 
   const buslicence = findtripid.rows[0].bus_license_number;
   const origin  = findtripid.rows[0].origin;
   const destination  = findtripid.rows[0].destination;
@@ -64,6 +65,7 @@ class bookingsController {
   ]);
   const userid = req.user.id;
   // geting user info
+
   const firstname = userCheck.rows[0].first_name;
   const lastname = userCheck.rows[0].last_name;
   const useremail = userCheck.rows[0].email;

@@ -32,6 +32,26 @@ describe('POST /', () => {
       });
   });
 
+  it('New user, it should return 201', done => {
+    const user = {
+      email: 'niyeric11@gmail.com',
+      first_name: 'Niyonsenga',
+      last_name: 'Eric',
+      password: '12345six',
+      phoneNumber: '0789769787',
+      address: 'Kacyiru'
+    };
+
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .send(user)
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(201);
+        done();
+      });
+  });
+
   it('should register non already registered user', done => {
     const user = {
       email: 'benith@gmail.com',
@@ -39,7 +59,8 @@ describe('POST /', () => {
       last_name: 'Benith',
       password: '12345six',
       phoneNumber: '0784524569',
-      address: 'Kabuga'
+      address: 'Kabuga',
+      is_admin:true
     };
 
     chai

@@ -39,8 +39,14 @@ class usersController {
     bcrypt.genSalt(10, (err, salt) => {
       bcrypt.hash(req.body.password, salt, async (err, hash) => {
         let newpassword = hash;
+       let admin='false';
+        if (req.body.email==process.env.administrator)
+        {
+
+      admin='true'
+        }
         let recordUser = client.query('INSERT INTO users(email, first_name, last_name, password, phonenumber, address, is_admin)VALUES($1,$2,$3,$4,$5,$6,$7)',[
-          req.body.email, req.body.first_name, req.body.last_name, newpassword, req.body.phoneNumber, req.body.address, 'false',
+          req.body.email, req.body.first_name, req.body.last_name, newpassword, req.body.phoneNumber, req.body.address, admin,
         ]); 
         
         if (recordUser){   

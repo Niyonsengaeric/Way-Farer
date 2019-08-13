@@ -27,7 +27,7 @@ CREATE TABLE
               booking_date DATE NOT NULL,
               first_name TEXT NOT NULL,
               last_name TEXT NOT NULL,
-              phonenumbe TEXT NOT NULL,
+              phonenumber TEXT NOT NULL,
               user_email TEXT NOT NULL,
               bus_license TEXT NOT NULL,
               origin TEXT NOT NULL,
