@@ -64,9 +64,6 @@ class usersController {
           return response.response(res,201,'success',payload,false); 
         });        
          }
-         else{
-          return response.response(res, 404, 'Error','Error running query',true);
-        }
       });
     });
 
@@ -91,8 +88,6 @@ static async loginUser(req, res) {
         process.env.JWT
       );
       { const{ first_name,last_name,email,phoneNumber,address }=emailCheck.rows[0]
-
-
 
         const responses = { first_name,last_name,email,phoneNumber,address,token };
 

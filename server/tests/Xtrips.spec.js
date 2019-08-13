@@ -191,8 +191,8 @@ describe('PATCH /', () => {
 
   it('return 406 if the trip is already canceled ', (done) => {
     const Signed = {
-      id: 6,
-      email: 'newuser@gmail.com',
+      id: 1,
+      email: 'niyeric@gmail.com',
       first_name: 'Niyonsenga',
       last_name: 'Eric',
       phoneNumber: '0789769787',
@@ -229,6 +229,28 @@ describe('PATCH /', () => {
       .send()
       .end((err, res) => {
         expect(res.status).to.equal(401);
+        done();
+      });
+  });
+
+  it('It should return 404 if trip not found ', (done) => {
+    const Signed = {
+      id: 1,
+      email: 'niyeric11@gmail.com',
+      first_name: 'NIYONSENGA',
+      last_name: 'ERIC',
+      phoneNumber: ' 0789769787',
+      address: 'KACYIRU',
+      is_admin: true,
+    };
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+    chai
+      .request(app)
+      .patch('/api/v1/trips/92/cancel')
+      .set('token', Token)
+      .send()
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
         done();
       });
   });

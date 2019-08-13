@@ -60,11 +60,12 @@ static async  cancelTrip(req, res) {
   let trip_id = await client.query('SELECT * FROM trips WHERE id=$1',[
     req.params.id,
   ]);
-  if (trip_id.rows[0].status=='CANCELED')
-  {
-    return response.response(res, 406,'error', 'trip Already CANCELED!', true);
-    }
   if(trip_id.rows.length>0){ 
+    console.log(trip_id.rows[0].status)
+    if (trip_id.rows[0].status=='CANCELED')
+    {
+      return response.response(res, 406,'error', 'trip Already CANCELED!', true);
+      }
     let updatetrip = client.query('UPDATE trips SET status=$1 where id = $2',[
       'CANCELED',req.params.id,
     ])
@@ -79,11 +80,8 @@ static async  cancelTrip(req, res) {
 
 static async  getTrips(req, res) {
   client.query('SELECT * FROM trips', function(err, result){
-    if (err){
-      return response.response(res, 404,'error', 'Error running query');
-    }else{
-      let resul = result.rows;
-      return response.response(res,200,'success',resul,false);      
+    if (result){ let resul = result.rows;
+      return response.response(res,200,'success',resul,false);   
     }
   })
 
