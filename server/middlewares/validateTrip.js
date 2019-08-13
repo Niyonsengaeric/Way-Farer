@@ -2,20 +2,21 @@ import Joi from 'joi';
 
 function validateTrip(trip) {
   const schema = {
-    seating_capacity: Joi.number().required().min(5),
+    seating_capacity: Joi.number().required().min(0),
     bus_license_number: Joi.string()
+      .alphanum()
       .max(50)
       .required(),
     origin: Joi.string()
-      .max(50)
+      .alphanum()
       .required(),
     destination: Joi.string()
-      .max(50)
+      .alphanum()
       .required(),
-    trip_date: Joi.date().required(),
+    trip_date: Joi.date().required().min('now'),
     time: Joi.required(),
-    fare: Joi.number().required(),
-    status: Joi.string()
+    fare: Joi.number().required().min(0),
+    status: Joi.string(),
   };
 
   return Joi.validate(trip, schema);

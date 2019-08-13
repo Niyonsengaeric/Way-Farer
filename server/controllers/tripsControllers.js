@@ -6,7 +6,6 @@ const router = express.Router();
 import {Client, Pool} from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
-const{JWT} = process.env;
 const {DATABASE_URL} = process.env;
 const connectionString = DATABASE_URL;
 const client = new Client({
@@ -17,7 +16,6 @@ client.connect()
 
 class tripscontrolllers {
   static async  regTrip(req, res) {
-// export const regTrip = async (req, res) => {
   const { error } = validate(req.body);
   if (error)
     return response.response(res, 422,'error', `${error.details[0].message}`, true);
@@ -39,12 +37,8 @@ class tripscontrolllers {
     ]);
 
 
-  if (
-    trip_origin.rows.length > 0 &&
-    trip_destination.rows.length > 0 &&
-    trip_date.rows.length > 0 &&
-    trip_time.rows.length > 0
-  ) {
+  if (trip_origin.rows.length > 0 && trip_destination.rows.length > 0 && trip_date.rows.length > 0 && trip_time.rows.length > 0 )
+   {
     return response.response(res, 409,'error', 'trip already registered ', true);
 
     
@@ -54,44 +48,30 @@ class tripscontrolllers {
       req.body.seating_capacity, req.body.bus_license_number, req.body.origin, req.body.destination, req.body.trip_date, req.body.fare, 'ACTIVE' ,req.body.time,
     ]); 
     if (recordTrip){ 
-      const payload= {
-
-        seating_capacity:req.body.seating_capacity,
-        bus_license_number:req.body.bus_license_number,
-        origin:req.body.origin,
-        destination:req.body.destination,
-        trip_date:req.body.trip_date,
-        fare:req.body.fare,
-        status:'active',
-        time:req.body.time,
-      }
-
+      const{ seating_capacity,bus_license_number,origin,destination,trip_date,fare,time} =req.body;      
+      const payload= { seating_capacity,bus_license_number,origin,destination,trip_date,fare,time }
       return response.response(res, 201,'success', payload, false);
      }
 
   }
 };
-
 static async  cancelTrip(req, res) {
-  const { id } = req.params;
 
   let trip_id = await client.query('SELECT * FROM trips WHERE id=$1',[
     req.params.id,
   ]);
   if(trip_id.rows.length>0){ 
-
     let updatetrip = client.query('UPDATE trips SET status=$1 where id = $2',[
       'CANCELED',req.params.id,
     ])
     trip_id.rows[0].status = 'CANCELED';
       return response.response(res, 200,'success', 'Trip cancelled successfully', false);
-
     }
-
  else {
     return response.response(res, 404,'error', 'Trip not Found!', true);
   }
 };
+
 
 static async  getTrips(req, res) {
   client.query('SELECT * FROM trips', function(err, result){
@@ -112,8 +92,6 @@ static async  spfTrip(req, res) {
   ]);
   if(searchtrip.rows.length>0){
     return response.response(res, 200,'success', searchtrip.rows,false); 
-    
-  //Join table
 }
  else {
     return response.response(res, 404,'error', 'Trip not Found!', true);
