@@ -1,13 +1,21 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import _ from 'lodash';
 import validate from '../middlewares/validateUser';
 import validateLogin from '../middlewares/validateLogin';
-import users from '../models/usersModels';
 import express from 'express';
 import response from '../helpers/response';
 const router = express.Router();
 
+import {Client, Pool} from 'pg';
+import dotenv from 'dotenv';
+dotenv.config();
+const{JWT} = process.env;
+const {DATABASE_URL} = process.env;
+const connectionString = DATABASE_URL;
+const client = new Client({
+  connectionString
+});
+client.connect()
 // eslint-disable-next-line
 class usersController {
   // view all properties
@@ -21,44 +29,48 @@ class usersController {
 
   // (error.details[0].message
 
-  let user = await users.filter(
-    user => user.email.toLowerCase() === req.body.email.toLowerCase()
-  );
-  if (user.length > 0) {
-    return response.response(
-      res,
-      409,'error',
-      'User with that email already registered',
-      true
-    );
+  let userCheck = await client.query('SELECT * FROM users WHERE email=$1 ',[
+    req.body.email,
+  ]);
+  if (userCheck.rows.length > 0) {
+    return response.response(res,409,'error','User already registered');
   } else {
-    const {
-      email,
-      first_name,
-      last_name,
-      password,
-      phoneNumber,
-      address
-    } = req.body;
-    // Add to object
-    const addUser = {
-      // id: Math.floor(Math.random() * 10000000),
-      id:users.length + 1,
-      email: email.toLowerCase(),
-      first_name: first_name.toUpperCase(),
-      last_name: last_name.toUpperCase(),
-      password: password,
-      phoneNumber: phoneNumber,
-      address: address.toUpperCase(),
-      is_admin: false
-    };
-    const salt = await bcrypt.genSalt(10);
-    addUser.password = await bcrypt.hash(addUser.password, salt);
 
-    users.push(addUser);
-    const hideitems=  {...addUser};
-    delete hideitems.password;
-    response.response(res, 201,'success', hideitems, false);
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(req.body.password, salt, async (err, hash) => {
+        let newpassword = hash;
+        let recordUser = client.query('INSERT INTO users(email, first_name, last_name, password, phonenumber, address, is_admin)VALUES($1,$2,$3,$4,$5,$6,$7)',[
+          req.body.email, req.body.first_name, req.body.last_name, newpassword, req.body.phoneNumber, req.body.address, 'false',
+        ]); 
+        
+        if (recordUser){   
+          let getId = await client.query('SELECT * FROM users WHERE email=$1 ',[
+            req.body.email,
+          ]);
+          const toBeSigned = {
+            id:getId.rows[0].id,
+            is_admin: false,
+          };         
+        jwt.sign(toBeSigned, JWT, { expiresIn: '24h' }, (err, token) => {
+          const payload= {
+
+            'firstname':req.body.first_name,
+            'lastname':req.body.last_name,
+            'email':req.body.email,
+            'phoneNumber':req.body.phoneNumber,
+            'address':req.body.address,
+            'token':token,
+          }
+          return response.response(res,201,'success',payload,false);  
+        });
+        
+         }
+         else{
+          return response.response(res, 404, 'Error','Error running query',true);
+        }
+      });
+    });
+
   }
 };
 // User log in
@@ -69,20 +81,23 @@ static async loginUser(req, res) {
   if (error)
     return response.response(res, 422,'error', `${error.details[0].message}`, true);
 
-  const user = await users.filter(
-    user => user.email.toLowerCase() === req.body.email.toLowerCase()
-  );
-  if (user.length > 0) {
-    if (bcrypt.compareSync(password, user[0].password)) {
+  let emailCheck = await client.query('SELECT * FROM users WHERE email=$1',[
+    req.body.email,
+  ]);
+
+  if (emailCheck.rows.length > 0) {
+    if (bcrypt.compareSync(password, emailCheck.rows[0].password)) {
       const token = jwt.sign(
-        { id: user[0].id, is_admin: user[0].is_admin },
+        { id:emailCheck.rows[0].id, is_admin: emailCheck.rows[0].is_admin, },
         process.env.JWT
       );
       {
         const responses = {
-          firstname: user[0].first_name,
-          lastname: user[0].last_name,
-          email: user[0].email,
+          firstname: emailCheck.rows[0].first_name,
+          lastname: emailCheck.rows[0].last_name,
+          email: emailCheck.rows[0].email,
+          phoneNumber:emailCheck.rows[0].phoneNumber,
+          address:emailCheck.rows[0].address,
           token
         };
 
