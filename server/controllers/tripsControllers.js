@@ -90,7 +90,6 @@ static async  getTrips(req, res) {
 
   }
 static async  spfTrip(req, res) {
-   //see a specific trips
   const { id } = req.params;
   let searchtrip = await client.query('SELECT * FROM trips WHERE id=$1',[
     req.params.id,
