@@ -78,7 +78,6 @@ static async  cancelTrip(req, res) {
 
 
 static async  getTrips(req, res) {
-  //see  all trips
   client.query('SELECT * FROM trips', function(err, result){
     if (err){
       return response.response(res, 404,'error', 'Error running query');
