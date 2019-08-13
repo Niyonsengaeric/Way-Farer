@@ -4,8 +4,8 @@ import { join } from 'path';
 function validateUser(user) {
   const schema = {
     last_name: Joi.string()
-      .alphanum()
       .trim()
+      .alphanum()
       .max(50)
       .required(),
     first_name: Joi.string()
