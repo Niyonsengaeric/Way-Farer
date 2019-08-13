@@ -2,6 +2,7 @@ import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
 import app from '../index';
+
 const should = chai.should();
 chai.use(chaiHttp);
 chai.should();
@@ -55,6 +56,37 @@ describe('post', () => {
         bus_license_number: 'RAC176Y',
         origin: 'MABARE',
         destination: 'BISHENYI',
+        trip_date: '10-10-2019',
+        fare: 3400,
+        time: '10:20',
+      };
+      const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+      chai
+        .request(app)
+        .post('/api/v1/trips')
+        .set('token', Token)
+        .send(trip)
+        .end((err, res) => {
+          expect(res.status).to.equal(201);
+          done();
+        });
+    });
+
+    it('It should return 201 when trip is created ', (done) => {
+      const Signed = {
+        id: 1,
+        email: 'newuser@gmail.com',
+        first_name: 'Niyonsenga',
+        last_name: 'Eric',
+        phoneNumber: '0789769787',
+        address: 'Kacyiru',
+        is_admin: true,
+      };
+      const trip = {
+        seating_capacity: 10,
+        bus_license_number: 'RAC176Y',
+        origin: 'Gisenyi',
+        destination: 'Butamwa',
         trip_date: '10-10-2019',
         fare: 3400,
         time: '10:20',
@@ -157,7 +189,7 @@ describe('PATCH /', () => {
       });
   });
 
-  it('It should return Trip not Found! if a trip does not exist ', (done) => {
+  it('return 406 if the trip is already canceled ', (done) => {
     const Signed = {
       id: 6,
       email: 'newuser@gmail.com',
@@ -170,11 +202,11 @@ describe('PATCH /', () => {
     const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
     chai
       .request(app)
-      .patch('/api/v1/trips/17/cancel')
+      .patch('/api/v1/trips/1/cancel')
       .set('token', Token)
       .send()
       .end((err, res) => {
-        expect(res.status).to.equal(404);
+        expect(res.status).to.equal(406);
         done();
       });
   });
