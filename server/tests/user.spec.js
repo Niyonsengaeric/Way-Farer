@@ -12,14 +12,14 @@ chai.should();
 
 // test for creating users
 describe('POST /', () => {
-  it('New user, it should return 201', done => {
+  it('New user, it should return 201', (done) => {
     const user = {
       email: 'newuser@gmail.com',
       first_name: 'Niyonsenga',
       last_name: 'Eric',
       password: '12345six',
       phoneNumber: '0789769787',
-      address: 'Kacyiru'
+      address: 'Kacyiru',
     };
 
     chai
@@ -32,14 +32,14 @@ describe('POST /', () => {
       });
   });
 
-  it('New user, it should return 201', done => {
+  it('New user, it should return 201', (done) => {
     const user = {
       email: 'niyeric11@gmail.com',
       first_name: 'Niyonsenga',
       last_name: 'Eric',
       password: '12345six',
       phoneNumber: '0789769787',
-      address: 'Kacyiru'
+      address: 'Kacyiru',
     };
 
     chai
@@ -52,7 +52,7 @@ describe('POST /', () => {
       });
   });
 
-  it('should register non already registered user', done => {
+  it('should register non already registered user', (done) => {
     const user = {
       email: 'benith@gmail.com',
       first_name: 'havugimana',
@@ -60,7 +60,6 @@ describe('POST /', () => {
       password: '12345six',
       phoneNumber: '0784524569',
       address: 'Kabuga',
-      is_admin:true
     };
 
     chai
@@ -73,14 +72,14 @@ describe('POST /', () => {
       });
   });
 
-  it('should not register already taken email', done => {
+  it('should not register already taken email', (done) => {
     const user = {
       email: 'newuser@gmail.com',
       first_name: 'Rwema',
       last_name: 'kalisa',
       password: '65432six',
       phoneNumber: '0789837734',
-      address: 'Kibungo'
+      address: 'Kibungo',
     };
 
     chai
@@ -93,14 +92,14 @@ describe('POST /', () => {
       });
   });
 
-  it('should not register 405 if the provided method is not allowed', done => {
+  it('should not register 405 if the provided method is not allowed', (done) => {
     const user = {
       email: 'newuser@gmail.com',
       first_name: 'Rwema',
       last_name: 'kalisa',
       password: '65432six',
       phoneNumber: '0789837734',
-      address: 'Kibungo'
+      address: 'Kibungo',
     };
 
     chai
@@ -113,14 +112,14 @@ describe('POST /', () => {
       });
   });
 
-  it('email should not be empty', done => {
+  it('email should not be empty', (done) => {
     const user = {
       email: '',
       first_name: 'Mugabo',
       last_name: 'Evode',
       password: '123456six',
       phoneNumber: '0785634779',
-      address: 'Kicukiro'
+      address: 'Kicukiro',
     };
 
     chai
@@ -138,10 +137,10 @@ describe('POST /', () => {
 // test for loging users
 
 describe('POST /', () => {
-  it('it should return 401 for Invalid user or password', done => {
+  it('it should return 401 for Invalid user or password', (done) => {
     const user = {
       email: 'benith@gmail.com',
-      password: '12345678six'
+      password: '12345678six',
     };
 
     chai
@@ -154,10 +153,10 @@ describe('POST /', () => {
       });
   });
 
-  it('it should return 401 for Invalid user or password', done => {
+  it('it should return 401 for Invalid user or password', (done) => {
     const user = {
       email: 'user8@gmail.com',
-      password: '12345six'
+      password: '12345six',
     };
 
     chai
@@ -170,10 +169,10 @@ describe('POST /', () => {
       });
   });
 
-  it('it should return 401 for Invalid user or password', done => {
+  it('it should return 401 for Invalid user or password', (done) => {
     const user = {
       email: 'user8@gmail.com',
-      password: '123456six'
+      password: '123456six',
     };
 
     chai
@@ -186,10 +185,10 @@ describe('POST /', () => {
       });
   });
 
-  it('it should return 200 if the username match with the password', done => {
+  it('it should return 200 if the username match with the password', (done) => {
     const user = {
       email: 'newuser@gmail.com',
-      password: '12345six'
+      password: '12345six',
     };
 
     chai
@@ -202,10 +201,10 @@ describe('POST /', () => {
       });
   });
 
-  it(' it should return 422 for invalid email and password', done => {
+  it(' it should return 422 for invalid email and password', (done) => {
     const user = {
       email: '',
-      password: ''
+      password: '',
     };
 
     chai
@@ -218,10 +217,10 @@ describe('POST /', () => {
       });
   });
 
-  it('it should return 422 for invalid email ', done => {
+  it('it should return 422 for invalid email ', (done) => {
     const user = {
       email: '',
-      password: '3456six'
+      password: '3456six',
     };
 
     chai

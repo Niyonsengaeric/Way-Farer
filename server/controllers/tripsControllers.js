@@ -55,8 +55,6 @@ class tripscontrolllers {
 
   }
 };
-
-
 static async  cancelTrip(req, res) {
 
   let trip_id = await client.query('SELECT * FROM trips WHERE id=$1',[
@@ -68,9 +66,7 @@ static async  cancelTrip(req, res) {
     ])
     trip_id.rows[0].status = 'CANCELED';
       return response.response(res, 200,'success', 'Trip cancelled successfully', false);
-
     }
-
  else {
     return response.response(res, 404,'error', 'Trip not Found!', true);
   }
@@ -96,8 +92,6 @@ static async  spfTrip(req, res) {
   ]);
   if(searchtrip.rows.length>0){
     return response.response(res, 200,'success', searchtrip.rows,false); 
-    
-  //Join table
 }
  else {
     return response.response(res, 404,'error', 'Trip not Found!', true);
