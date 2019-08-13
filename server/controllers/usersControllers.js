@@ -25,7 +25,7 @@ class usersController {
   const { error } = validate(req.body);
 
   if (error)
-    return response.response(res, 422,'error', `${error.details[0].message}`, true);
+    return response.response(res, 422,'error', `${ error.details[0].message }`, true);
 
   // (error.details[0].message
 
@@ -41,7 +41,7 @@ class usersController {
         let newpassword = hash;
        let admin='false';
         if (req.body.email==process.env.administrator)
-        {
+      { 
 
       admin='true'
         }
@@ -58,18 +58,11 @@ class usersController {
             is_admin: false,
           };         
         jwt.sign(toBeSigned, JWT, { expiresIn: '24h' }, (err, token) => {
-          const payload= {
 
-            'firstname':req.body.first_name,
-            'lastname':req.body.last_name,
-            'email':req.body.email,
-            'phoneNumber':req.body.phoneNumber,
-            'address':req.body.address,
-            'token':token,
-          }
-          return response.response(res,201,'success',payload,false);  
-        });
-        
+          const{ first_name,last_name,email,phoneNumber,address }=req.body
+          const payload= { first_name,last_name,email,phoneNumber,address,token }
+          return response.response(res,201,'success',payload,false); 
+        });        
          }
          else{
           return response.response(res, 404, 'Error','Error running query',true);
@@ -97,15 +90,11 @@ static async loginUser(req, res) {
         { id:emailCheck.rows[0].id, is_admin: emailCheck.rows[0].is_admin, },
         process.env.JWT
       );
-      {
-        const responses = {
-          firstname: emailCheck.rows[0].first_name,
-          lastname: emailCheck.rows[0].last_name,
-          email: emailCheck.rows[0].email,
-          phoneNumber:emailCheck.rows[0].phoneNumber,
-          address:emailCheck.rows[0].address,
-          token
-        };
+      { const{ first_name,last_name,email,phoneNumber,address }=emailCheck.rows[0]
+
+
+
+        const responses = { first_name,last_name,email,phoneNumber,address,token };
 
         return response.response(res, 200,'success', responses, false);
       }
