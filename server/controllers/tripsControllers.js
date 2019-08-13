@@ -60,6 +60,10 @@ static async  cancelTrip(req, res) {
   let trip_id = await client.query('SELECT * FROM trips WHERE id=$1',[
     req.params.id,
   ]);
+  if (trip_id.rows[0].status=='CANCELED')
+  {
+    return response.response(res, 406,'error', 'trip Erleady CANCELED!', true);
+    }
   if(trip_id.rows.length>0){ 
     let updatetrip = client.query('UPDATE trips SET status=$1 where id = $2',[
       'CANCELED',req.params.id,
