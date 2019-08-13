@@ -60,6 +60,10 @@ static async  cancelTrip(req, res) {
   let trip_id = await client.query('SELECT * FROM trips WHERE id=$1',[
     req.params.id,
   ]);
+  if (trip_id.rows[0].status=='CANCELED')
+  {
+    return response.response(res, 406,'error', 'trip Already CANCELED!', true);
+    }
   if(trip_id.rows.length>0){ 
     let updatetrip = client.query('UPDATE trips SET status=$1 where id = $2',[
       'CANCELED',req.params.id,
@@ -74,6 +78,7 @@ static async  cancelTrip(req, res) {
 
 
 static async  getTrips(req, res) {
+  //see  all trips
   client.query('SELECT * FROM trips', function(err, result){
     if (err){
       return response.response(res, 404,'error', 'Error running query');
@@ -86,6 +91,7 @@ static async  getTrips(req, res) {
 
   }
 static async  spfTrip(req, res) {
+   //see a specific trips
   const { id } = req.params;
   let searchtrip = await client.query('SELECT * FROM trips WHERE id=$1',[
     req.params.id,
