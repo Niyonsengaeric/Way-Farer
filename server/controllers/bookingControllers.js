@@ -1,10 +1,18 @@
 import moment from 'moment';
-import _ from 'lodash';
 import validate from '../middlewares/validateBooking';
-import users from '../models/usersModels';
-import trips from '../models/tripsModels';
 import response from '../helpers/response';
-import bookings from '../models/bookingsModels';
+//Database connection
+import {Client, Pool} from 'pg';
+import dotenv from 'dotenv';
+dotenv.config();
+const{JWT} = process.env;
+const {DATABASE_URL} = process.env;
+const connectionString = DATABASE_URL;
+const client = new Client({
+  connectionString
+});
+client.connect()
+
 
 class bookingsController {
   // view all properties
@@ -17,42 +25,52 @@ class bookingsController {
 
   // // ###check trip ID
   const tripid = req.body.tripId;
-  const findtripid = trips.find(findtripid => findtripid.id == tripid);
-  if (!findtripid) 
- { 
-   
-  return response.response(res, 404,'error', 'No trip found!', true);
-}
-  // check if trip is activated*
+  let findtripid = await client.query('SELECT * FROM trips WHERE id=$1',[
+    req.body.tripId,
+  ]);
+  if (findtripid.rows.length <=0) 
+  { 
+    
+   return response.response(res, 404,'error', 'No trip found!', true);
+ }
+  if (findtripid) 
+  { 
+      // check if trip is activated*
+    if (findtripid.rows[0].status == 'CANCELED') {
+      return response.response(
+        res,
+        406,'error',
+  
+        'TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP',
+        true
+      );
+    }
 
-  if (findtripid.status == 'CANCELED') {
-    return response.response(
-      res,
-      406,'error',
 
-      'TRIP HAS BEEN CANCELED!!! PLEASE TRY ANOTHER DIFFERENT TRIP',
-      true
-    );
-  }
+ }
+ 
+  const buslicence = findtripid.rows[0].bus_license_number;
+  const origin  = findtripid.rows[0].origin;
+  const destination  = findtripid.rows[0].destination;
+  const fare = findtripid.rows[0].fare;
+  const triptime = findtripid.rows[0].time;
+  const tripidnumber = findtripid.rows[0].id;
+  const tripdate = findtripid.rows[0].trip_date;
+  const seating_capacity = findtripid.rows[0].seating_capacity;
 
-  const buslicence = findtripid.bus_license_number;
-  const { origin } = findtripid;
-  const { destination } = findtripid;
-  const { fare } = findtripid;
-  const triptime = findtripid.time;
-  const tripidnumber = findtripid.id;
-  const tripdate = findtripid.trip_date;
-  const { seating_capacity } = findtripid;
 
   // // ###check users  req.user.id
-  const finduser = users.find(finduser => finduser.id == req.user.id);
+  let userCheck = await client.query('SELECT * FROM users WHERE id=$1 ',[
+    req.user.id,
+  ]);
   const userid = req.user.id;
-
   // geting user info
-  const firstname = finduser.first_name;
-  const lastname = finduser.last_name;
-  const useremail = finduser.email;
-  const userphone = finduser.phoneNumber;
+
+  const firstname = userCheck.rows[0].first_name;
+  const lastname = userCheck.rows[0].last_name;
+  const useremail = userCheck.rows[0].email;
+  const userphone = userCheck.rows[0].phonenumber;
+ 
 
   // check for booking and save
   if (seating_capacity <= 0) {
@@ -64,71 +82,101 @@ class bookingsController {
     );
     
   }
-  const book = bookings.find(
-    (book => book.user_id == userid) &&
-      (book => book.trip_id == findtripid.id && book.user_id == userid)
-  );
-  if (!book) {
-    // ##### checking for left Seatings
 
-    const addBooking = {
-      id:bookings.length + 1,
-      booking_date: moment().format(),
-      first_name: firstname.toUpperCase(),
-      last_name: lastname.toUpperCase(),
-      phoneNumber: userphone,
-      user_email: useremail.toLowerCase(),
-      bus_license_number: buslicence.toUpperCase(),
-      origin: origin.toUpperCase(),
-      destination: destination.toUpperCase(),
-      trip_date: tripdate,
-      trip_time: triptime,
-      fare,
-      trip_id: tripidnumber,
-      user_id: userid
-    };
-    bookings.push(addBooking);
 
-    if (addBooking) {
+  let book = await client.query('SELECT * FROM bookings WHERE trip_id=$1 AND user_id=$2',[
+    req.body.tripId,req.user.id,
+  ]);
+
+  if (!book.rows[0]) {
+    // ##### inserting in table
+
+    let recordbooking = client.query('INSERT INTO bookings(booking_date, first_name,last_name, phonenumber, user_email, bus_license,origin,destination,trip_date,time,fare,trip_id,user_id)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',[
+      moment().format(), firstname,lastname, userphone,useremail,buslicence,origin,destination,tripdate ,triptime,fare,tripidnumber,userid,
+    ]);
+    if (recordbooking ) {
       // ###update trip seats
-      const updtrip = trips.findIndex(updtrip => updtrip.id == tripid);
-      if (updtrip >= 0) {
-        trips[updtrip].seating_capacity = seating_capacity - 1;
+        let updatetrip = client.query('UPDATE trips SET seating_capacity=$1 where id = $2',[
+          seating_capacity-1,findtripid.rows[0].id,
+        ])
 
-        return response.response(res, 201,'success', addBooking, false);
-      }
+        const book= {
+          booking_date: moment().format(),
+          first_name: firstname.toUpperCase(),
+          last_name: lastname.toUpperCase(),
+          phonenumber: userphone,
+          user_email: useremail.toLowerCase(),
+          bus_license_number: buslicence.toUpperCase(),
+          origin: origin.toUpperCase(),
+          destination: destination.toUpperCase(),
+          trip_date: tripdate,
+          trip_time: triptime,
+          farer:fare,
+        }
+
+
+        return response.response(res, 201,'success', book, false);
+  
     }
-  } else {
+  }
+
+else {
     return response.response(res, 409,'error', 'booking already made!', true);
   }
 };
+
+
+
 static async getbookings(req, res) {
-  // ###Display all bookings made users //sa admin
-  // ###Display bookings  user for user only
-  const finduserid = bookings.filter(
-    finduserid => finduserid.user_id === req.user.id
-    
-  );
-
-
-  if (finduserid.length > 0) {
-    return response.response(res, 200,'success', finduserid, false);
+  // ###Display all bookings made by users //sa admin
+  if (req.user.is_admin)
+  {
+    client.query('SELECT * FROM bookings', function(err, result){
+      if (err){
+        return response.response(res, 404,'error', 'Error running query');
+      }else{
+        let resul = result.rows;
+        return response.response(res,200,'success',resul,false);      
+      }
+    })    
   }
+  // ###Display bookings  user for user only
+  else{
+  let finduserid = await client.query('SELECT * FROM bookings WHERE user_id=$1',[
+    req.user.id,
+  ]);
 
+  
+  if(finduserid.rows.length>0){ 
+    return response.response(res, 200,'success', finduserid.rows, false);
+    
+  }
   return response.response(res, 404,'error', 'no bookings found', true);
+}    
+
+ 
 };
+
+
 static async deletebooking(req, res) {
   const { id } = req.params;
-  const findbookingindex = bookings.findIndex(
-    findbooking =>
-      findbooking.id == parseInt(id, 10) && findbooking.user_id == req.user.id
-  );
+
+  let findbook = await client.query('SELECT * FROM bookings WHERE id=$1 AND user_id=$2',[
+    parseInt(id, 10),req.user.id,
+  ]);
 
   //###delete a Booking
-  if (findbookingindex !== -1) {
-    bookings.splice(findbookingindex, 1);
-return response.response(res, 200,'success', 'Booking deleted successfully', false);
-  } else {
+  if(findbook.rows.length>0){  
+    
+  let recordprop = client.query('DELETE FROM bookings WHERE id =$1',[
+    parseInt(id, 10)
+   ]);
+   if (recordprop){
+    return response.response(res, 200, 'success', 'Booking deleted successfully', false);
+   }
+
+  }
+ else {
     return response.response(res, 404,'error', 'Booking not Found!', true);
   }
 };

@@ -12,7 +12,6 @@ describe('post', () => {
   describe('POST /', () => {
     it('It should return 201 when the trip is created ', done => {
       const Signed = {
-        id: 6,
         email: 'newuser@gmail.com',
         first_name: 'Niyonsenga',
         last_name: 'Eric',
