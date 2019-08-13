@@ -9,6 +9,7 @@ function validatelogin(user) {
       .required()
       .email(),
     password: Joi.string()
+      .alphanum()
       .min(5)
       .max(1024)
       .required(),
