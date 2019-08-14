@@ -70,8 +70,9 @@ class bookingsController {
       );
       if (recordbooking) {
       // ###update trip seats
+      const{id:tripId}=findtripid.rows[0]
         const updatetrip = client.query('UPDATE trips SET seating_capacity=$1 where id = $2', [
-          seating_capacity - 1, findtripid.rows[0].id,
+          seating_capacity - 1, tripId,
         ]);
         if (!updatetrip) { return response.response(res, 500, 'error', 'Error running query!', true); }
         const getbook = {
@@ -128,15 +129,28 @@ class bookingsController {
     ]);
 
     // ###delete a Booking
+    
     if (findbook.rows.length > 0) {
+      const {trip_id}=findbook.rows[0]
       const recordprop = client.query('DELETE FROM bookings WHERE id =$1', [
         parseInt(id, 10),
       ]);
       if (recordprop) {
+        const findtripid = await client.query('SELECT * FROM trips WHERE id=$1', [
+          trip_id,
+        ]);
+        const{seating_capacity}=findtripid.rows[0]
+        const updatetrips = client.query('UPDATE trips SET seating_capacity=$1 where id = $2', [
+          seating_capacity + 1,trip_id ,
+        ]);
+
+        if (!updatetrips) { return response.response(res, 500, 'error', 'Error running query!', true); }
+
+
         return response.response(res, 200, 'success', 'Booking deleted successfully', false);
       }
     } else {
-      return response.response(res, 404, 'error', 'Booking not Found!', true);
+      return response.response(res, 404, 'error', 'That is not your booking', true);
     }
   }
 }
