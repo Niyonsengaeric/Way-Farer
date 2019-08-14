@@ -78,6 +78,24 @@ class tripscontrolllers {
 
 
   static async getTrips(req, res) {
+
+    if (req.query.destination){      
+      const { destination } = req.query; 
+            //Searching trips by destination 
+            let searchdestination =await client.query('SELECT * FROM trips WHERE destination=$1',[
+              destination,
+            ]);    
+    console.log(searchdestination.rows.length)
+    if(searchdestination.rows.length>0){ 
+      console.log('found')  
+      return response.response(res, 200,'destination', searchdestination.rows,false); 
+    //Join table
+    }
+    else{
+      return response.response(res, 404, 'error', 'No trip found on the given destination', true); 
+  
+    }
+    }
     client.query('SELECT * FROM trips', (err, result) => {
       if (result) { let resul = result.rows;
         return response.response(res, 200, 'success', resul, false);
