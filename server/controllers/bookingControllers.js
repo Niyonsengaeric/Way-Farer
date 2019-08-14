@@ -39,9 +39,11 @@ class bookingsController {
  }
 
  const{bus_license_number,origin,destination,fare,time,id,trip_date,seating_capacity}=findtripid.rows[0]
-
+ 
+ let userCheck;
  // // ###check users  req.user.id
-  let userCheck = await client.query('SELECT * FROM users WHERE id=$1 ',[
+ 
+userCheck = await client.query('SELECT * FROM users WHERE id=$1 ',[
     req.user.id,
   ]);
   const userid = req.user.id;
@@ -49,9 +51,9 @@ class bookingsController {
   const{first_name,last_name,email,phonenumber}= userCheck.rows[0]
 
   // check for booking and save
-
+  let book;
   if (seating_capacity <= 0) { return response.response(res,406,'error','SORRY!!! No seats left on the trip',true); }
-  let book = await client.query('SELECT * FROM bookings WHERE trip_id=$1 AND user_id=$2',[
+  book = await client.query('SELECT * FROM bookings WHERE trip_id=$1 AND user_id=$2',[
     req.body.tripId,req.user.id,
   ]);
 
