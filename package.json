@@ -11,7 +11,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node server/index.js",
     "sbabel": "--exec babel-node server/index.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint .",
     "copydev": "babel-node ./server/models/index.js createTables",
     "deletedev": "babel-node ./server/models/index.js tearDown",
