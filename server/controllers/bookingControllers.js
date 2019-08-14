@@ -56,7 +56,7 @@ class bookingsController {
 
     if (seating_capacity <= 0) { return response.response(res, 406, 'error', 'SORRY!!! No seats left on the trip', true); }
     const book = await client.query('SELECT * FROM bookings WHERE trip_id=$1 AND user_id=$2', [
-      tripid, req.user.id,
+      tripid, userid,
     ]);
 
     if (!book.rows[0]) {
