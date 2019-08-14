@@ -105,7 +105,7 @@ class bookingsController {
         return response.response(res, 200, 'success', resul, false);
       });
     }
-    // ###Display bookings for user only
+    // ###Display to the user his own bookings
     else {
       const finduserid = await client.query('SELECT * FROM bookings WHERE user_id=$1', [
         userId,
