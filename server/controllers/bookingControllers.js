@@ -42,7 +42,7 @@ class bookingsController {
 
 
     // // ###check users  req.user.id
-    const userid = req.user.id;
+    const { id: userid } = req.user;
     const userCheck = await client.query('SELECT * FROM users WHERE id=$1 ', [
       userid,
     ]);
