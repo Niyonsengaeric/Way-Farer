@@ -78,7 +78,7 @@ else {
 
 
 static async getbookings(req, res) {
-  // ###Display all bookings made by users //sa admin
+  // ###Display all bookings made by users //as admin
   if (req.user.is_admin)
   {
     client.query('SELECT * FROM bookings', function(err, result){
@@ -104,7 +104,6 @@ static async getbookings(req, res) {
   return response.response(res, 404,'error', 'no bookings found', true);
 }    
 
- 
 };
 
 
