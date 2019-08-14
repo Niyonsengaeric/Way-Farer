@@ -1,34 +1,27 @@
 {
-  "extends": ["airbnb-base"],
+  "extends": [
+      "airbnb-base"
+  ],
+  "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 6
+      "ecmaVersion": 6
   },
   "env": {
-    "node": true,
-    "es6": true,
-    "browser": true
-  },
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly",
-    "describe": "readonly",
-    "it": "readonly",
-    "before": "readonly",
-    "after": "readonly"
+      "mocha": true
   },
   "rules": {
-    "comma-dangle": "warn",
-    "linebreak-style": 0,
-    "newline-per-chained-call": 0,
-    "consistent-return": 0,
-    "no-shadow": 0,
-    "no-unused-vars": [
-      "error",
-      {
-        "vars": "local",
-        "args": "none",
-        "mocha/no-exclusive-tests": "error"
-      }
-    ]
+    "linebreak-style":"off",
+    "brace-style":"off",
+    "no-console":"off",
+    "camelcase":"off",
+    "import/no-named-as-default":"off",
+    "import/no-named-as-default-member":"off",
+    "consistent-return":"off",
+    "prefer-const":"off",
+    "no-param-reassign":"off",
+    "no-restricted-globals":"off",
+    "no-unused-expressions":"off"
+    
+
   }
 }
