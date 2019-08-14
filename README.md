@@ -26,6 +26,7 @@ WayFarer is a Public Bus Transportation Booking Service.
 - **Mocha and Chai** - for testing
 - **Eslint** - code analysis tool for identifying problematic patterns found in JavaScript code
 - **Babel JS** - JavaScript compiler (**ES6** to **ES5**)
+- **PostgreSQL** - Relational database management system
 
 # **Requirements and Installation steps**
 
