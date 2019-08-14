@@ -98,19 +98,20 @@ class bookingsController {
 
   static async getbookings(req, res) {
   // ###Display all bookings made by users //as admin
-    if (req.user.is_admin) {
+  const { id: userId,is_admin } = req.user;
+    if (is_admin) {
       client.query('SELECT * FROM bookings', (err, result) => {
-        if (err) {
-          return response.response(res, 404, 'error', 'Error running query');
+        if (result.rows.length<=0) {
+          return response.response(res, 404, 'error', 'trip not found');
         }
         const resul = result.rows;
         return response.response(res, 200, 'success', resul, false);
       });
     }
-    // ###Display bookings  user for user only
+    // ###Display bookings for user only
     else {
       const finduserid = await client.query('SELECT * FROM bookings WHERE user_id=$1', [
-        req.user.id,
+        userId,
       ]);
 
 
