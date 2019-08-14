@@ -2,7 +2,7 @@ import Joi from 'joi';
 
 function validateTrip(trip) {
   const schema = {
-    seating_capacity: Joi.number().required().min(0),
+    seating_capacity: Joi.number().required().min(0).max(1000),
     bus_license_number: Joi.string()
       .alphanum()
       .max(50)
@@ -15,7 +15,7 @@ function validateTrip(trip) {
       .required(),
     trip_date: Joi.date().required().min('now'),
     time: Joi.required(),
-    fare: Joi.number().required().min(0),
+    fare: Joi.number().required().min(0).max(10000),
     status: Joi.string(),
   };
 
