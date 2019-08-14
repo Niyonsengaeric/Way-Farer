@@ -59,7 +59,6 @@ class bookingsController {
       tripid, userid,
     ]);
 
-    if (!book.rows[0]) {
     // ##### inserting in table
       const cols = 'booking_date, first_name,last_name, phonenumber, user_email, bus_license,origin,destination,trip_date,time,fare,trip_id,user_id';
       const cels = '$1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13';
@@ -90,9 +89,7 @@ class bookingsController {
         };
         return response.response(res, 201, 'success', getbook, false);
       }
-    } else {
-      return response.response(res, 409, 'error', 'booking already made!', true);
-    }
+    
   }
 
 
