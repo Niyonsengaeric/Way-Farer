@@ -35,7 +35,7 @@ describe('post Bookings', () => {
         });
     });
 
-    it('It should return 409 if the user has already book a seat on a trip ', (done) => {
+    it('It should return 201 if the user has already book and made more ', (done) => {
       const Signed = {
         id: 1,
         email: 'niyeric11@gmail.com',
@@ -53,7 +53,7 @@ describe('post Bookings', () => {
         .set('token', Token)
         .send(booking)
         .end((err, res) => {
-          expect(res.status).to.equal(409);
+          expect(res.status).to.equal(201);
           done();
         });
     });
