@@ -13,7 +13,7 @@
       "url": "https://github.com/Niyonsengaeric/Way-Farer/blob/develop/LICENCE.md"
     }
   },
-  "host": "https://way-farer0.herokuapp.com",
+  "host": "way-farer0.herokuapp.com",
   "basePath": "/api/v1",
   "tags": [
     {

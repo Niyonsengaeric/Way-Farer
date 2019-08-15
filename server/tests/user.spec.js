@@ -6,10 +6,6 @@ const should = chai.should();
 chai.use(chaiHttp);
 chai.should();
 
-/*
- * Test the /GET route
- */
-
 // test for creating users
 describe('POST /', () => {
   it('New user, it should return 201', (done) => {
