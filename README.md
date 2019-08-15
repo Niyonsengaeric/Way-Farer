@@ -21,8 +21,8 @@ WayFarer is a Public Bus Transportation Booking Service.
 
 ## Optional Features.
 
-1.Users can get a list of filtered trips based on origin.
-2.Users can get a list of filtered trips based on destination.
+1. Users can get a list of filtered trips based on origin.
+2. Users can get a list of filtered trips based on destination.
 
 # **Technonlogies**
 
@@ -78,6 +78,10 @@ WayFarer is a Public Bus Transportation Booking Service.
 `- GET /bookings - View all bookings`
 
 `- DELETE /bookings/<:booking-id> - Delete a booking`
+
+`- GET /trips?origin=<:desired-origin> - Filter trips using origin.`
+
+`- GET /trips?destination=<:desired-destination> - Filter trips using destination.`
 
 ### Links.
 
