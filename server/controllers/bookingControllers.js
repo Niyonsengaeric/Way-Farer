@@ -74,7 +74,6 @@ class bookingsController {
         const updatetrip = client.query('UPDATE trips SET seating_capacity=$1 where id = $2', [
           seating_capacity - 1, tripId,
         ]);
-        if (!updatetrip) { return response.response(res, 500, 'error', 'Error running query!', true); }
         const getbook = {
           booking_date: moment().format(),
           first_name,
@@ -100,7 +99,7 @@ class bookingsController {
     if (is_admin) {
       client.query('SELECT * FROM bookings', (err, result) => {
         if (result.rows.length<=0) {
-          return response.response(res, 404, 'error', 'trip not found');
+          return response.response(res, 404, 'error', 'No Booking Yet!!!');
         }
         const resul = result.rows;
         return response.response(res, 200, 'success', resul, false);
@@ -143,10 +142,6 @@ class bookingsController {
         const updatetrips = client.query('UPDATE trips SET seating_capacity=$1 where id = $2', [
           seating_capacity + 1,trip_id ,
         ]);
-
-        if (!updatetrips) { return response.response(res, 500, 'error', 'Error running query!', true); }
-
-
         return response.response(res, 200, 'success', 'Booking deleted successfully', false);
       }
     } else {
