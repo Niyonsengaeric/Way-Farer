@@ -30,7 +30,7 @@ class usersController {
   // (error.details[0].message
 
   let userCheck = await client.query('SELECT * FROM users WHERE email=$1 ',[
-    req.body.email,
+    req.body.email.toLowerCase(),
   ]);
   if (userCheck.rows.length > 0) {
     return response.response(res,409,'error','User already registered');
@@ -46,12 +46,12 @@ class usersController {
       admin='true'
         }
         let recordUser = client.query('INSERT INTO users(email, first_name, last_name, password, phonenumber, address, is_admin)VALUES($1,$2,$3,$4,$5,$6,$7)',[
-          req.body.email, req.body.first_name, req.body.last_name, newpassword, req.body.phoneNumber, req.body.address, admin,
+          req.body.email.toLowerCase(), req.body.first_name.toLowerCase(), req.body.last_name.toLowerCase(), newpassword, req.body.phoneNumber, req.body.address.toLowerCase(), admin,
         ]); 
         
         if (recordUser){   
           let getId = await client.query('SELECT * FROM users WHERE email=$1 ',[
-            req.body.email,
+            req.body.email.toLowerCase(),
           ]);
           const toBeSigned = {
             id:getId.rows[0].id,
@@ -78,7 +78,7 @@ static async loginUser(req, res) {
     return response.response(res, 422,'error', `${error.details[0].message}`, true);
 
   let emailCheck = await client.query('SELECT * FROM users WHERE email=$1',[
-    req.body.email,
+    req.body.email.toLowerCase(),
   ]);
 
   if (emailCheck.rows.length > 0) {
