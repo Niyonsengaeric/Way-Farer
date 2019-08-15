@@ -67,7 +67,6 @@ class tripscontrolllers {
       let updatetrip = client.query('UPDATE trips SET status=$1 where id = $2', [
         'CANCELED', req.params.id,
       ]);
-      if (!updatetrip) { return response.response(res, 500, 'error', 'Error running query!', true); }
       trip_id.rows[0].status = 'CANCELED';
       return response.response(res, 200, 'success', 'Trip cancelled successfully', false);
     }
@@ -77,7 +76,9 @@ class tripscontrolllers {
 
 
   static async getTrips(req, res) {
+    
     if (req.query.destination){ 
+      const {destination} = req.query; 
             let searchdestination =await client.query('SELECT * FROM trips WHERE destination=$1',[
               destination,
             ]);

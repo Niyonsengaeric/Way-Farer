@@ -12,6 +12,35 @@ chai.should();
 
 describe('post Bookings', () => {
   describe('POST /', () => {
+
+
+    it('It should get a status of 404 when the user is admin and there is no bookings in data base ', (done) => {
+      const Signed = {
+        id: 1,
+        email: 'niyeric11@gmail.com',
+        first_name: 'Niyonsenga',
+        last_name: 'Eric',
+        phoneNumber: '0789769787',
+        address: 'Kacyiru',
+        isAdmin: true,
+      };
+      const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+      chai
+        .request(app)
+        .get('/api/v1/bookings')
+        .set('token', Token)
+        .send()
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+          done();
+        });
+    });
+
+
+
+
+
+
     it('It should book a seat if trip id exist and user have not yet book a seat ', (done) => {
       const Signed = {
         id: 1,

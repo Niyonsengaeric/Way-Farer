@@ -259,7 +259,7 @@ describe('PATCH /', () => {
 describe('get /', () => {
   it('It should display all the trips ', (done) => {
     const Signed = {
-      id: 6,
+      id: 1,
       email: 'newuser@gmail.com',
       first_name: 'Niyonsenga',
       last_name: 'Eric',
@@ -278,6 +278,102 @@ describe('get /', () => {
         done();
       });
   });
+
+  it('It should display  the trips based on destination ', (done) => {
+    const Signed = {
+      id: 1,
+      email: 'newuser@gmail.com',
+      first_name: 'Niyonsenga',
+      last_name: 'Eric',
+      phoneNumber: '0789769787',
+      address: 'Kacyiru',
+      is_admin: true,
+    };
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+    chai
+      .request(app)
+      .get('/api/v1/trips?destination=Butamwa')
+      .set('token', Token)
+      .send()
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+
+  it('It should display  the trips based on origin ', (done) => {
+    const Signed = {
+      id: 1,
+      email: 'newuser@gmail.com',
+      first_name: 'Niyonsenga',
+      last_name: 'Eric',
+      phoneNumber: '0789769787',
+      address: 'Kacyiru',
+      is_admin: true,
+    };
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+    chai
+      .request(app)
+      .get('/api/v1/trips?origin=Gisenyi')
+      .set('token', Token)
+      .send()
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+
+
+  it('It should not display  the trips if the destination is not found ', (done) => {
+    const Signed = {
+      id: 1,
+      email: 'newuser@gmail.com',
+      first_name: 'Niyonsenga',
+      last_name: 'Eric',
+      phoneNumber: '0789769787',
+      address: 'Kacyiru',
+      is_admin: true,
+    };
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+    chai
+      .request(app)
+      .get('/api/v1/trips?destination=umucanga')
+      .set('token', Token)
+      .send()
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
+
+
+  it('It should not display  the trips if it does not found the origin ', (done) => {
+    const Signed = {
+      id: 1,
+      email: 'newuser@gmail.com',
+      first_name: 'Niyonsenga',
+      last_name: 'Eric',
+      phoneNumber: '0789769787',
+      address: 'Kacyiru',
+      is_admin: true,
+    };
+    const Token = jwt.sign(Signed, process.env.JWT, { expiresIn: '24h' });
+    chai
+      .request(app)
+      .get('/api/v1/trips?origin=umucanga')
+      .set('token', Token)
+      .send()
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        done();
+      });
+  });
+
+
+
+
 
   it('It should display a specific trip ', (done) => {
     const Signed = {
