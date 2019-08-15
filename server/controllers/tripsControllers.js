@@ -78,8 +78,6 @@ class tripscontrolllers {
 
   static async getTrips(req, res) {
     if (req.query.destination){ 
-     
-      const { destination } = req.query; 
             let searchdestination =await client.query('SELECT * FROM trips WHERE destination=$1',[
               destination,
             ]);
@@ -91,6 +89,7 @@ class tripscontrolllers {
       return response.response(res, 404, 'error', 'No trip found on the given destination', true); 
   
     }
+
     }
 
     if (req.query.origin){    
@@ -107,13 +106,13 @@ class tripscontrolllers {
     }
     }
 
-    else if (!req.query.destination){return response.response(res, 400, 'error', 'you must search a destination or an Origin!', true) }
+          client.query('SELECT * FROM trips', (err, result) => {
+          if (result) { let resul = result.rows;
+            return response.response(res, 200, 'success', resul, false);
+          }
+        }); 
   
-    client.query('SELECT * FROM trips', (err, result) => {
-      if (result) { let resul = result.rows;
-        return response.response(res, 200, 'success', resul, false);
-      }
-    });
+
   }
 
   static async spfTrip(req, res) {
