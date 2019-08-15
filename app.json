@@ -30,7 +30,6 @@
     }
   ],
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
@@ -443,7 +442,7 @@
     "booking": {
       "type": "object",
       "properties": {
-        "trip_id": {
+        "tripId": {
           "type": "integer"
         }
       },
