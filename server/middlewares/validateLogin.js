@@ -4,15 +4,13 @@ function validatelogin(user) {
   const schema = {
 
     email: Joi.string()
-      .max(250)
-      .trim()
-      .required()
-      .email(),
+    .regex(/^\S*$/)
+    .max(250)
+    .email(),
     password: Joi.string()
-      .alphanum()
-      .min(5)
-      .max(1024)
-      .required(),
+    .regex(/^\S*$/)
+    .min(5)
+    .max(1024),
   };
 
   return Joi.validate(user, schema);

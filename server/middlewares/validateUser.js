@@ -4,39 +4,32 @@ import { join } from 'path';
 function validateUser(user) {
   const schema = {
     last_name: Joi.string()
-      .trim()
-      .alphanum()
-      .max(50)
-      .required(),
+      .regex(/^\S*$/)
+      .alphanum(),      
     first_name: Joi.string()
-      .alphanum()
-      .trim()
-      .max(50)
-      .required(),
+    .regex(/^\S*$/)
+    .alphanum(), 
     phoneNumber: Joi.string()
-      .trim()
-      .max(50)
+    .regex(/^\S*$/)
+      .max(15)
       .required()
       .strict()
       .regex(/^[0-9]{0,10}$/),
     address: Joi.string()
-      .alphanum()  
-      .trim()
+    .regex(/^\S*$/)
+    .alphanum()
       .min(5)
-      .max(50)
-      .required(),
+      .max(50),
     email: Joi.string()
-      .trim()
+    .regex(/^\S*$/)
       .min(5)
       .max(250)
-      .required()
       .email(),
     password: Joi.string()
+    .regex(/^\S*$/)
       .alphanum()
-      .trim()
       .min(5)
-      .max(50)
-      .required()
+      .max(9)
   };
 
   return Joi.validate(user, schema);
