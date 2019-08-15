@@ -145,7 +145,7 @@ class bookingsController {
         return response.response(res, 200, 'success', 'Booking deleted successfully', false);
       }
     } else {
-      return response.response(res, 404, 'error', 'That is not your booking', true);
+      return response.response(res, 404, 'error', 'No Booking find ', true);
     }
   }
 }
