@@ -13,7 +13,7 @@
       "url": "https://github.com/Niyonsengaeric/Way-Farer/blob/develop/LICENCE.md"
     }
   },
-  "host": "way-farer0.herokuapp.com",
+  "host": "localhost:4000",
   "basePath": "/api/v1",
   "tags": [
     {
@@ -80,10 +80,10 @@
     "/auth/signin": {
       "post": {
         "tags": [
-          "user"
+          "User"
         ],
         "summary": "signin user",
-        "description": "",
+        "description": "Sign in",
         "operationId": "signin",
         "consumes": [
           "application/json",
@@ -384,7 +384,7 @@
           "type": "string"
         },
         "phoneNumber": {
-          "type": "integer"
+          "type": "string"
         },
         "address": {
           "type": "string"
@@ -443,7 +443,7 @@
     "booking": {
       "type": "object",
       "properties": {
-        "trip_id": {
+        "tripId": {
           "type": "integer"
         }
       },
