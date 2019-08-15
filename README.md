@@ -19,6 +19,11 @@ WayFarer is a Public Bus Transportation Booking Service.
 8. View all bookings. An Admin can see all bookings, while user can see all of his/her bookings.
 9. Users can delete their booking.
 
+## Optional Features.
+
+1.Users can get a list of filtered trips based on origin.
+2.Users can get a list of filtered trips based on destination.
+
 # **Technonlogies**
 
 - **Express JS** - API development framework
