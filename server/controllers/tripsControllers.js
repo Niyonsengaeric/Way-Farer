@@ -60,7 +60,6 @@ class tripscontrolllers {
       req.params.id,
     ]);
     if (trip_id.rows.length > 0) {
-      console.log(trip_id.rows[0].status);
       if (trip_id.rows[0].status === 'CANCELED')
       {
         return response.response(res, 406, 'error', 'trip Already CANCELED!', true);
@@ -78,24 +77,38 @@ class tripscontrolllers {
 
 
   static async getTrips(req, res) {
-
-    if (req.query.destination){      
+    if (req.query.destination){ 
+     
       const { destination } = req.query; 
-            //Searching trips by destination 
             let searchdestination =await client.query('SELECT * FROM trips WHERE destination=$1',[
               destination,
-            ]);    
-    console.log(searchdestination.rows.length)
+            ]);
+
     if(searchdestination.rows.length>0){ 
-      console.log('found')  
       return response.response(res, 200,'destination', searchdestination.rows,false); 
-    //Join table
     }
     else{
       return response.response(res, 404, 'error', 'No trip found on the given destination', true); 
   
     }
     }
+
+    if (req.query.origin){    
+      const {origin } = req.query; 
+            let searchorigin =await client.query('SELECT * FROM trips WHERE origin=$1',[
+              origin,
+            ]);
+    if(searchorigin.rows.length>0){  
+      return response.response(res, 200,'success',searchorigin.rows,false); 
+    //Join table
+    }
+    else{
+      return response.response(res, 404, 'error', 'No trip found on the given origin', true);   
+    }
+    }
+
+    else if (!req.query.destination){return response.response(res, 400, 'error', 'you must search a destination or an Origin!', true) }
+  
     client.query('SELECT * FROM trips', (err, result) => {
       if (result) { let resul = result.rows;
         return response.response(res, 200, 'success', resul, false);
