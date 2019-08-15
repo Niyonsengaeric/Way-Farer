@@ -20,11 +20,11 @@ class tripscontrolllers {
     if (error) { return response.response(res, 422, 'error', `${error.details[0].message}`, true); }
 
     let trip_origin = await client.query('SELECT * FROM trips WHERE origin=$1 ', [
-      req.body.origin,
+      req.body.origin.toLowerCase(),
     ]);
 
     let trip_destination = await client.query('SELECT * FROM trips WHERE destination=$1 ', [
-      req.body.destination,
+      req.body.destination.toLowerCase(),
     ]);
 
     let trip_date = await client.query('SELECT * FROM trips WHERE trip_date=$1 ', [
@@ -35,14 +35,18 @@ class tripscontrolllers {
       req.body.time,
     ]);
 
+    let bus_licence = await client.query('SELECT * FROM trips WHERE bus_license_number=$1 ', [
+      req.body.bus_license_number.toLowerCase(),
+    ]);
 
-    if (trip_origin.rows.length > 0 && trip_destination.rows.length > 0 && trip_date.rows.length > 0 && trip_time.rows.length > 0)
+
+    if (trip_origin.rows.length > 0 && trip_destination.rows.length > 0 && trip_date.rows.length > 0 && trip_time.rows.length > 0 && bus_licence.rows.length > 0 )
     {
       return response.response(res, 409, 'error', 'trip already registered ', true);
     }
 
     let recordTrip = client.query('INSERT INTO trips(seating_capacity, bus_license_number, origin, destination, trip_date, fare,status, time)VALUES($1,$2,$3,$4,$5,$6,$7,$8)', [
-      req.body.seating_capacity, req.body.bus_license_number, req.body.origin, req.body.destination, req.body.trip_date, req.body.fare, 'ACTIVE', req.body.time,
+      req.body.seating_capacity, req.body.bus_license_number.toLowerCase(), req.body.origin.toLowerCase(), req.body.destination.toLowerCase(), req.body.trip_date, req.body.fare, 'ACTIVE', req.body.time,
     ]);
     if (recordTrip) {
       const {
@@ -80,7 +84,7 @@ class tripscontrolllers {
     if (req.query.destination){ 
       const {destination} = req.query; 
             let searchdestination =await client.query('SELECT * FROM trips WHERE destination=$1',[
-              destination,
+              destination.toLowerCase(),
             ]);
 
     if(searchdestination.rows.length>0){ 
@@ -96,7 +100,7 @@ class tripscontrolllers {
     if (req.query.origin){    
       const {origin } = req.query; 
             let searchorigin =await client.query('SELECT * FROM trips WHERE origin=$1',[
-              origin,
+              origin.toLowerCase(),
             ]);
     if(searchorigin.rows.length>0){  
       return response.response(res, 200,'success',searchorigin.rows,false); 
