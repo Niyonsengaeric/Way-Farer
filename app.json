@@ -428,11 +428,8 @@
         "fare": {
           "type": "integer"
         },
-        "status": {
-          "type": "integer"
-        },
         "time": {
-          "type": "integer"
+          "type": "string"
         }
       },
       "xml": {
