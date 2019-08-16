@@ -87,9 +87,9 @@ static async loginUser(req, res) {
         { id:emailCheck.rows[0].id, is_admin: emailCheck.rows[0].is_admin, },
         process.env.JWT
       );
-      { const{ first_name,last_name,email,phoneNumber,address }=emailCheck.rows[0]
+      { const{ first_name,last_name,email,phoneNumber,address,is_admin }=emailCheck.rows[0]
 
-        const responses = { first_name,last_name,email,phoneNumber,address,token };
+        const responses = { first_name,last_name,email,phoneNumber,address,is_admin,token };
 
         return response.response(res, 200,'success', responses, false);
       }
