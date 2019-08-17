@@ -9,6 +9,8 @@
   "env": {
       "mocha": true
   },
+
+  
   "rules": {
     "linebreak-style":"off",
     "brace-style":"off",
