@@ -45,8 +45,9 @@ class usersController {
 
       admin='true'
         }
+        const {email,first_name,last_name,phoneNumber,address}=req.body
         let recordUser = client.query('INSERT INTO users(email, first_name, last_name, password, phonenumber, address, is_admin)VALUES($1,$2,$3,$4,$5,$6,$7)',[
-          req.body.email.toLowerCase(), req.body.first_name.toLowerCase(), req.body.last_name.toLowerCase(), newpassword, req.body.phoneNumber, req.body.address.toLowerCase(), admin,
+          email.toLowerCase(), first_name.toLowerCase(), last_name.toLowerCase(), newpassword, phoneNumber, address.toLowerCase(), admin,
         ]); 
         
         if (recordUser){   

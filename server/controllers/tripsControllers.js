@@ -45,8 +45,10 @@ class tripscontrolllers {
       return response.response(res, 409, 'error', 'trip already registered ', true);
     }
 
+    const{seating_capacity,bus_license_number,origin,destination,trip_date,fare,time}=req.body
+
     let recordTrip = client.query('INSERT INTO trips(seating_capacity, bus_license_number, origin, destination, trip_date, fare,status, time)VALUES($1,$2,$3,$4,$5,$6,$7,$8)', [
-      req.body.seating_capacity, req.body.bus_license_number.toLowerCase(), req.body.origin.toLowerCase(), req.body.destination.toLowerCase(), req.body.trip_date, req.body.fare, 'ACTIVE', req.body.time,
+      seating_capacity, bus_license_number.toLowerCase(), origin.toLowerCase(), destination.toLowerCase(), trip_date, fare, 'ACTIVE', time,
     ]);
     if (recordTrip) {
       const {
