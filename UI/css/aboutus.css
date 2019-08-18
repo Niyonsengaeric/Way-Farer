@@ -1,0 +1,30 @@
+body {
+  height: auto;
+}
+
+.details-content {
+  margin-top: 100px;
+}
+
+.about-details {
+  max-width: 600px;
+  background-color: #abd6dc;
+  color: #000;
+  margin-right: auto;
+  margin-left: auto;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 10, 0.16);
+  border-radius: 25px0px;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  margin-bottom: 100px;
+  font-family: Anaheim;
+  position: relative;
+  opacity: 1;
+  padding-left: 1%;
+}
+
+.about-details h1 {
+  color: #000;
+  font-size: 25;
+  font-weight: bold;
+}

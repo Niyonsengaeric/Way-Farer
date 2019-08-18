@@ -1,0 +1,90 @@
+.dashboard {
+  background-color: #fff;
+  color: #000;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.dashboard .container {
+  padding-top: 50px;
+  padding-left: 10%;
+  padding-bottom: 100px;
+}
+
+.dashboard-content span {
+  text-align: center;
+}
+
+.dashboard-topbar a:hover {
+  text-decoration: none;
+}
+
+.dashboard-topbar a img {
+  width: 18px;
+}
+
+.table thead tr {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table tbody tr td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.clickablelink {
+  background: #dedede;
+}
+
+.table tbody tr td .Status {
+  color: #2abc5d;
+  border-radius: 3px;
+  padding: 10px 5px 10px 5px;
+  font-weight: bold;
+}
+
+.table tbody tr td .Status2 {
+  color: red;
+  border-radius: 3px;
+  padding: 10px 5px 10px 5px;
+  font-weight: bold;
+}
+
+.button-delete {
+  color: #fff;
+  background-color: #bd2130;
+  border-color: #f65959;
+  border: 1px solid transparent;
+  padding: 10px 5px;
+  font-size: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0px;
+  margin-top: -10px;
+  width: 130px;
+}
+
+.button-delete:hover {
+  color: #fff;
+  background-color: red;
+}
+
+.container h4 {
+  font-weight: bold;
+  font-size: 30px;
+}
+
+tr a {
+  text-decoration: none;
+  color: black;
+}
+
+tr a:hover {
+  text-decoration: none;
+  color: #23b4ca;
+}

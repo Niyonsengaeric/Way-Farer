@@ -1,0 +1,346 @@
+.row {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .mainheader {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 0;
+  }
+  .logo {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    float: left;
+    text-align: center;
+    padding-left: 44%;
+  }
+  .mainheader nav {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    text-transform: uppercase;
+    float: left;
+    width: 97.4%;
+  }
+  form {
+    width: 97.4%;
+  }
+  .mainheader form input[type="text"] {
+    padding: 0 0 0 5;
+    line-height: 1.5;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 35%;
+  }
+  .row {
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .mainheader {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 0;
+  }
+  .logo {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    float: left;
+    text-align: center;
+    padding-left: 44%;
+  }
+  .mainheader nav {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    text-transform: uppercase;
+    float: left;
+    width: 98%;
+  }
+  form {
+    width: 98%;
+  }
+  .mainheader form input[type="text"] {
+    padding: 0 0 0 5;
+    line-height: 1.5;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: left;
+    margin-bottom: 10px;
+    margin-left: 35%;
+  }
+  .row {
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 640px) {
+  .mainheader {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 0;
+  }
+  .popimg .image {
+    position: relative;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 30%;
+    float: left;
+    margin: 0 5 10 0;
+  }
+  .logo {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    float: left;
+    text-align: center;
+    padding-left: 30%;
+  }
+  .mainheader form {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    float: left;
+    width: 94.5%;
+  }
+  .mainheader nav {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    text-transform: uppercase;
+    float: left;
+    width: 94.5%;
+  }
+  form {
+    width: 98%;
+  }
+  .mainheader form input[type="text"] {
+    padding: 0 0 0 5;
+    line-height: 1.5;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: left;
+    margin-bottom: 10px;
+  }
+  .row {
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 568px) {
+  .mainheader {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 0;
+  }
+  .logo {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    float: left;
+    text-align: center;
+    padding-left: 24%;
+  }
+  .mainheader nav {
+    margin: 0 auto;
+    background: var(--mainBlack);
+    height: 60px;
+    padding: 0 10;
+    display: flex;
+    text-transform: uppercase;
+    float: left;
+    width: 94%;
+  }
+  form {
+    width: 94%;
+  }
+  input[type="text"] {
+    padding: 0 0 0 5;
+    line-height: 1.5;
+    border-radius: 5px;
+    margin-top: 10px;
+    float: left;
+    margin-bottom: 10px;
+    width: 100px;
+  }
+  .row {
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 150px) and (max-width: 700px) {
+  .body {
+    font-size: 100%;
+  }
+  .row {
+    width: 100%;
+    padding: 0px;
+  }
+  .mainheader nav {
+    height: 270px;
+  }
+  .mainheader nav ul {
+    padding-left: 0;
+  }
+  .mainheader nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+  .mainheader nav a:link,
+  .mainheader nav a:visited {
+    height: 20px;
+    display: block;
+  }
+  .login-page {
+    width: 100%;
+  }
+  .contact-page {
+    width: 100%;
+    margin-top: 22px;
+  }
+  .contact-page .form {
+    margin-top: 0px;
+    margin-left: 10px;
+  }
+  .dashboard {
+    background-color: #fff;
+    color: #000;
+    padding-top: 40px;
+    margin-bottom: 100px;
+  }
+  .dashboard .container {
+    padding-top: 50px;
+    width: 83% !important;
+    padding-left: 0px !important;
+    padding-bottom: 100px;
+  }
+  .dashboard-topbar {
+    width: 100%;
+  }
+  .table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    display: block;
+  }
+  .dashboard {
+    background-color: #fff;
+    color: #000;
+    padding-top: 40px;
+    margin-bottom: 100px;
+  }
+  .dashboard .container {
+    padding-top: 50px;
+    width: 83% !important;
+    padding-left: 0px !important;
+    padding-bottom: 100px;
+  }
+  .dashboard-topbar {
+    /* background-color: #fff; */
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1300px) {
+  .login-page {
+    width: 100%;
+  }
+  .login-page form {
+    width: 90%;
+    margin: auto;
+  }
+  .contact-page {
+    width: 100%;
+  }
+  .row2 {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #right .img {
+    width: 80%;
+    margin-left: 15%;
+  }
+  .popimg .image {
+    width: 100%;
+  }
+  .menusm {
+    display: block !important;
+  }
+  .menulg {
+    display: none !important;
+  }
+  .dashboard {
+    background-color: #fff;
+    color: #000;
+    padding-top: 40px;
+    margin-bottom: 100px;
+  }
+  .dashboard .container {
+    padding-top: 50px;
+    width: 83% !important;
+    padding-left: 0px !important;
+    padding-bottom: 100px;
+  }
+  .dashboard-topbar {
+    /* background-color: #fff; */
+    width: 100%;
+  }
+  .row2 {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .row2 {
+    width: 90%;
+  }
+  .row {
+    margin-top: 150px;
+    text-align: center;
+    margin-left: 0px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .row2 {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .row2 {
+    width: 100% !important;
+  }
+}

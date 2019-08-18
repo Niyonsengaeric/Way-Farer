@@ -1,0 +1,207 @@
+<html>
+  <header>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Niyonsenga Eric" />
+    <title>Way Farer</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/resp.css" rel="stylesheet" type="text/css" />
+    <link href="../css/book.css" rel="stylesheet" type="text/css" />
+  </header>
+
+  <body>
+    <header class="mainheader">
+      <div class="logo">
+        <a href="#">
+          <h1><b>Way Farer</b></h1>
+        </a>
+      </div>
+      <nav>
+        <div class="menuitems">
+          <ul>
+            <li>
+              <a href="../index.html">Home</a>
+            </li>
+            <li>
+              <a href="bookings.html">Bookings</a>
+            </li>
+            <li>
+              <a href="trips.html">Trips</a>
+            </li>
+            <li>
+              <a href="book.html"><b>Book Ticket</b></a>
+            </li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="contact.html">contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+      <form>
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search..."
+          title="Type in a name"
+        />
+        <a href="login.html">Log Out</a>
+      </form>
+    </header>
+
+    <div class="book-content">
+      <div class="book-form">
+        <h1 style="text-align: center;">Ticket Booking</h1>
+        <div class="form-content">
+          <p class="line-on-side"></p>
+          <div>
+            <form>
+              <fieldset class="book-fieldset">
+                <label>First Name:</label>
+                <input
+                  type="text"
+                  class="book-fields"
+                  id="first-name"
+                  name="first-name"
+                  placeholder="First name"
+                  value=""
+                  required
+                  autofocus=""
+                />
+              </fieldset>
+              <fieldset class="book-fieldset">
+                <label>Last Name:</label>
+                <input
+                  type="text"
+                  class="book-fields"
+                  id="last-name"
+                  name="last-name"
+                  placeholder="Last name"
+                  value=""
+                  required
+                  autofocus=""
+                />
+              </fieldset>
+              <fieldset class="book-fieldset">
+                <label>Phone:</label>
+                <input
+                  type="text"
+                  class="book-fields"
+                  id="Phone"
+                  name="Phone"
+                  placeholder="Phone eg +250780000000"
+                  value=""
+                  required
+                  autofocus=""
+                />
+              </fieldset>
+              <fieldset class="book-fieldset">
+                <label>Seat Numer:</label>
+
+                <select
+                  class="book-fields"
+                  id="seat"
+                  name="seat"
+                  placeholder="15"
+                  value=""
+                >
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                </select>
+              </fieldset>
+              <fieldset class="book-fieldset">
+                <label>Destination:</label>
+                <select
+                  class="book-fields"
+                  id="destination"
+                  name="destination"
+                  placeholder="Destination"
+                >
+                  <option value="Kigali-Huye">Kigali-Huye</option>
+                  <option value="Butare-Huye">Butare-Huye</option>
+                  <option value="Gisenyi-Huye">Gisenyi-Huye</option>
+                  <option value="Rwamagana-Huye">Rwamagana-Huye</option>
+                  <option value="Gicumbi-Huye">Gicumbi-Huye</option>
+                  <option value="HUye-kigali">HUye-kigali</option>
+                  <option value="Kamembe-Kigali">Kamembe-Kigali</option>
+                  <option value="Kigali-Rwamagana">Kigali-Rwamagana</option>
+                  <option value="Kigali-Musanze">Kigali-Musanze</option>
+                  <option value="Kigali-Gisenyi">Kigali-Gisenyi</option>
+                  <option value="Kigali-Rwotamasimbi">
+                    Kigali-Rwotamasimbi
+                  </option>
+                </select>
+              </fieldset>
+
+              <fieldset class="book-fieldset">
+                <label>Date:</label>
+                <input
+                  type="date"
+                  class="book-fields"
+                  id="Date"
+                  name="Date"
+                  placeholder=""
+                  value=""
+                  required
+                  autofocus=""
+                />
+              </fieldset>
+
+              <fieldset class="book-fieldset">
+                <label>Time:</label>
+
+                <select
+                  class="book-fields"
+                  id="time"
+                  name="time"
+                  placeholder="15"
+                  value=""
+                >
+                  <option value="13:30">13:30</option>
+                  <option value="14:30">14:30</option>
+                  <option value="15:30">15:30</option>
+                  <option value="16:30">16:30</option>
+                  <option value="17:30">17:30</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:30">19:30</option>
+                  <option value="20:30">20:30</option>
+                </select>
+              </fieldset>
+
+              <fieldset class="book-fieldset" id="prices">
+                <label>Price</label>
+                <input
+                  type="text"
+                  class="book-fields"
+                  id="price"
+                  placeholder="4500 Rwf"
+                  disabled="disabled"
+                />
+              </fieldset>
+
+              <button type="submit" class="button-book large">Book Now</button>
+            </form>
+          </div>
+          <br />
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <div class="footer">
+    <div class="icon">
+      <a href="#"><img src="../images/facebook.png" /></a>
+      <a href="#"><img src="../images/twitter.png" /></a>
+      <a href="#"><img src="../images/youtube.png" /></a>
+    </div>
+    <p>
+      © copyright 2019
+      <a href="aboutus.html">Way Farer.</a>
+      All rights Reserve
+    </p>
+  </div>
+</html>
