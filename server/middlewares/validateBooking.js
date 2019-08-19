@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-function validatebook(book) {
+const validatebook = (book) => {
   const schema = {
     tripId: Joi.number()
       .required(),
@@ -9,6 +9,4 @@ function validatebook(book) {
 
   return Joi.validate(book, schema);
 }
-
-
-module.exports = validatebook;
+export default validatebook;

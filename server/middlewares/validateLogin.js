@@ -4,17 +4,15 @@ function validatelogin(user) {
   const schema = {
 
     email: Joi.string()
-      .max(250)
-      .trim()
-      .required()
-      .email(),
+    .regex(/^\S*$/)
+    .max(250)
+    .email(),
     password: Joi.string()
-      .min(5)
-      .max(1024)
-      .required(),
+    .regex(/^\S*$/)
+    .min(5)
+    .max(1024),
   };
 
   return Joi.validate(user, schema);
 }
-
-module.exports = validatelogin;
+export default validatelogin;
