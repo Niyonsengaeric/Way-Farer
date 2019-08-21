@@ -27,7 +27,7 @@ class tripscontrolllers {
       req.body.destination.toLowerCase(),
     ]);
 
-    let trip_date = await client.query('SELECT * FROM trips WHERE trip_date=$1 ', [
+    let trip_dates = await client.query('SELECT * FROM trips WHERE trip_date=$1 ', [
       req.body.trip_date,
     ]);
 
@@ -40,7 +40,7 @@ class tripscontrolllers {
     ]);
 
 
-    if (trip_origin.rows.length > 0 && trip_destination.rows.length > 0 && trip_date.rows.length > 0 && trip_time.rows.length > 0 && bus_licence.rows.length > 0 )
+    if (trip_origin.rows.length > 0 && trip_destination.rows.length > 0 && trip_dates.rows.length > 0 && trip_time.rows.length > 0 && bus_licence.rows.length > 0 )
     {
       return response.response(res, 409, 'error', 'trip already registered ', true);
     }
