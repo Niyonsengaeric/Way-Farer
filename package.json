@@ -37,7 +37,7 @@
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "Validator": "^1.0.8",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "config": "^3.2.2",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
